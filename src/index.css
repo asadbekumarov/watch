@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #020617;
+    color: #ffffff;
+  }
+
+  html {
+    scroll-behavior: initial; /* Lenis handles smooth scrolling */
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar - Oceanic Sapphire */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Mask Reveal Utilities */
+.clip-inset-full {
+  clip-path: inset(100% 0 0 0);
+}
+.clip-inset-zero {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Luxury button transitions - Royal Oceanic Style */
+.luxury-btn {
+  @apply relative inline-flex items-center justify-center px-8 py-3.5 text-xs font-bold tracking-[0.2em] uppercase rounded-full border border-blue-500/30 text-white bg-transparent transition-all duration-500 ease-out hover:bg-blue-600 hover:text-white hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.45)] hover:scale-105 active:scale-95;
+}
+
+/* Glassmorphism luxury panel */
+.luxury-glass {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}

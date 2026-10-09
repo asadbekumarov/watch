@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ui-review": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "C:\\Users\\VICTUS\\ui-review\\packages\\ui-review\\dist\\cli.js",
+        "mcp"
+      ]
+    }
+  }
+}
