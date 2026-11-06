@@ -1,24 +1,20 @@
-// SAMPLE DATA - replace
-
 export interface StoreAddress {
   address: string;
   type: string;
+  district: string;
+  landmark: string;
 }
 
-export interface StoreInstallment {
-  enabled: boolean;
-  months: number[];
-}
-
-export interface StoreGuarantees {
-  original: boolean;
-  warrantyMonths: number;
-  boxAndDocuments: boolean;
-  delivery: string;
+export interface StoreDeliveryInfo {
+  estimatedMinutes: string;
+  freeDeliveryThreshold: number;
+  standardFee: number;
+  coverageArea: string;
 }
 
 export interface StoreInfo {
   name: string;
+  tagline: string;
   since: number;
   addresses: StoreAddress[];
   phone: string;
@@ -26,39 +22,48 @@ export interface StoreInfo {
   instagram: string;
   workingHours: string;
   mapsLink: string;
-  installment: StoreInstallment;
-  guarantees: StoreGuarantees;
+  delivery: StoreDeliveryInfo;
+  heritageStory: {
+    origin: string;
+    guarantee: string;
+    services: string;
+  };
 }
 
 export const storeData: StoreInfo = {
-  name: "Vaqt Saroyi",
-  since: 2009,
+  name: "Chronos Genève | Haute Horlogerie",
+  tagline: "O'zbekistondagi rasmiy Shveytsariya lyuks soatlari butigi va maxsus xizmat",
+  since: 2018,
   addresses: [
     {
-      address: "Toshkent, Amir Temur ko'chasi 108",
-      type: "bosh do'kon",
+      address: "Toshkent, Amir Temur shoh ko'chasi 107B",
+      type: "Markaziy VIP Showroom & Xizmat Markazi",
+      district: "Yunusobod",
+      landmark: "Wyndham Tashkent mehmonxonasi yonida",
     },
     {
-      address: "Toshkent, Chilonzor, Bunyodkor shoh ko'chasi 24",
-      type: "filial",
+      address: "Toshkent, Mirobod ko'chasi 21",
+      type: "Zarafshon Exclusive Lounge",
+      district: "Mirobod",
+      landmark: "Premier Hall ro'parasida",
     },
   ],
-  phone: "+998 90 123 45 67",
-  telegram: "@vaqtsaroyi_demo",
-  instagram: "@vaqtsaroyi.demo",
-  workingHours: "Har kuni 10:00 - 21:00",
-  mapsLink: "https://maps.google.com/?q=Toshkent+Amir+Temur+108",
-  installment: {
-    enabled: true,
-    months: [6, 12],
+  phone: "+998 71 200 88 00",
+  telegram: "@chronos_geneve",
+  instagram: "@chronos.uz",
+  workingHours: "Har kuni 10:00 - 21:00 (VIP qabul oldindan yozilish orqali)",
+  mapsLink: "https://maps.google.com/?q=Toshkent+Amir+Temur+107B",
+  delivery: {
+    estimatedMinutes: "1-2 soat ichida",
+    freeDeliveryThreshold: 0, // All watches are delivered with complimentary VIP armored courier
+    standardFee: 0,
+    coverageArea: "Toshkent shahri va O'zbekiston bo'ylab maxsus zirhli inkassatsiya kuryerida",
   },
-  guarantees: {
-    original: true,
-    warrantyMonths: 24,
-    boxAndDocuments: true,
-    delivery: "Toshkent bo'ylab bepul, viloyatlarga pochta orqali",
+  heritageStory: {
+    origin: "Barcha taqdim etilgan soatlar Jeneva va Le Lokldagi rasmiy ishlab chiqaruvchilardan to'g'ridan-to'g'ri keltiriladi.",
+    guarantee: "Har bir soatga xalqaro COSC xronometr sertifikati va 5 yillik rasmiy ishlab chiqaruvchi kafolati taqdim etiladi.",
+    services: "Bepul o'lchov, remeshok almashtirish, xususiy gravirovka va bir umrlik profilaktika xizmati.",
   },
 };
 
 export default storeData;
-

@@ -1,19 +1,59 @@
 @import "tailwindcss";
 
 @theme {
+  /* ── Backgrounds: Deep Obsidian & Carbon Black ── */
+  --color-horology-obsidian: #090909;
+  --color-horology-surface: #111111;
+  --color-horology-card: #161616;
+  --color-horology-subtle: #1e1e1e;
+
+  /* ── Typography: Platinum White & Brushed Steel Gray ── */
+  --color-horology-platinum: #f8f8f8;
+  --color-horology-white: #ffffff;
+  --color-horology-steel: #8e8e93;
+  --color-horology-steel-dark: #636366;
+
+  /* ── Accents: 18K Champagne Gold ── */
+  --color-gold-primary: #d4af37;
+  --color-gold-hover: #e5c158;
+  --color-gold-muted: rgba(212, 175, 55, 0.15);
+  --color-gold-glow: rgba(212, 175, 55, 0.25);
+
+  /* ── Borders & Glassmorphism ── */
+  --color-horology-border: rgba(212, 175, 55, 0.2);
+  --color-horology-border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* ── Semantic Status Tones ── */
+  --color-horology-success: #34c759;
+  --color-horology-warning: #ff9f0a;
+  --color-horology-error: #ff453a;
+
+  /* ── Aliases & Backward-Compatible Mappings ── */
+  --color-espresso-base: #090909;
+  --color-espresso-surface: #111111;
+  --color-espresso-card: #161616;
+  --color-espresso-subtle: #1e1e1e;
+
+  --color-foam-primary: #f8f8f8;
+  --color-foam-muted: #e5e5ea;
+  --color-stone-muted: #8e8e93;
+  --color-stone-subtle: #636366;
+
+  --color-espresso-border: rgba(212, 175, 55, 0.2);
+  --color-espresso-border-subtle: rgba(255, 255, 255, 0.08);
+
   --color-noir: #090909;
   --color-noir-deep: #050505;
-  --color-noir-card: #0e0e0e;
-  --color-noir-surface: #141414;
-  --color-noir-border: #222222;
+  --color-noir-card: #161616;
+  --color-noir-surface: #111111;
+  --color-noir-border: rgba(212, 175, 55, 0.2);
 
-  --color-cream: #f5ecd5;
-  --color-cream-soft: #eae1ca;
-  --color-cream-subtle: #d6ccb5;
+  --color-cream: #f8f8f8;
+  --color-cream-soft: #f2f2f7;
+  --color-cream-subtle: #e5e5ea;
 
   --color-gold: #d4af37;
-  --color-gold-dark: #6b5410;
-  --color-gold-muted: rgba(212, 175, 55, 0.4);
+  --color-gold-dark: #8c7322;
 
   --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -21,15 +61,18 @@
 
 :root {
   --bg-primary: #090909;
-  --cream: #f5ecd5;
-  --gold-accent: #d4af37;
-  --text-primary: #f5ecd5;
-  --text-body: #e8e2d0;
-  --text-secondary: #a8a8a8;
-  --text-label: #b5b5b5;
+  --bg-surface: #111111;
+  --bg-card: #161616;
+  --text-primary: #f8f8f8;
+  --text-body: #d1d1d6;
+  --text-muted: #8e8e93;
+  --accent-gold: #d4af37;
+  --accent-gold-hover: #e5c158;
+  --border-gold-subtle: rgba(212, 175, 55, 0.2);
+  --border-subtle: rgba(255, 255, 255, 0.08);
 }
 
-/* Custom Scrollbar for Luxury Aesthetic */
+/* Custom Swiss Horology Obsidian Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -37,54 +80,30 @@
   background: #090909;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: #1e1e1e;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #d4af37;
 }
 
-/* Accessible Keyboard Focus Rings */
+/* Accessible Focus Rings in 18K Champagne Gold */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-select:focus-visible {
+select:focus-visible,
+textarea:focus-visible {
   outline: 2px solid #d4af37 !important;
   outline-offset: 3px !important;
 }
 
-/* Restrained hairline rules */
-.hairline {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-.hairline-cream {
-  border-color: rgba(9, 9, 9, 0.2);
-}
-
-/* GSAP Hardware acceleration helper */
-.reveal-text,
-.rv-mask-child,
-.hero-display-reveal,
-.anatomy-row,
-.giant-hero-num {
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
+/* Luxury Shimmer Glow for Badges and Metallic Accents */
+@keyframes goldShimmer {
+  0% { opacity: 0.3; transform: scale(0.98); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+  100% { opacity: 0.3; transform: scale(0.98); }
 }
 
-/* Brand Shelf caption animation */
-@keyframes brandCaptionSlideUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.brand-caption-enter {
-  animation: brandCaptionSlideUp 0.45s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.gold-glow-pulse {
+  animation: goldShimmer 3s ease-in-out infinite;
 }

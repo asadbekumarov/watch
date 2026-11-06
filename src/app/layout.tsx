@@ -19,11 +19,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vaqtsaroyi.uz"),
-  title: "Vaqt Saroyi | Original Qo'l Soatlari Do'koni Toshkent",
+  metadataBase: new URL("https://espressonoble.uz"),
+  title: "Espresso Noble & Roastery | Toshkentda Yangi Qahva & Tezkor Yetkazish",
   description:
-    "Toshkentdagi original qo'l soatlari saloni. 2009 yildan buyon xizmatingizda. 24 oylik kafolat, quti va sertifikatlar, O'zbekiston bo'ylab yetkazib berish.",
-  keywords: ["soatlar", "qo'l soatlari", "Toshkent soat do'koni", "original soatlar", "Vaqt Saroyi"],
+    "Toshkentda 100% yangi qovurilgan Arabica qahvasi, nozik pishiriqlar va 30-40 daqiqada termo-sumkada issiq holda yetkazib berish xizmati.",
+  keywords: [
+    "kofe yetkazib berish",
+    "kofe Toshkent",
+    "qahva donalari",
+    "specialty coffee Tashkent",
+    "Espresso Noble",
+    "kofe dostavka",
+  ],
 };
 
 export default function RootLayout({
@@ -33,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uz" className={`${playfair.variable} ${inter.variable} scroll-smooth dark`}>
-      <body className="bg-[#090909] text-[#EDEDED] font-sans antialiased selection:bg-[#D4AF37] selection:text-[#090909] overflow-x-hidden min-h-screen">
+      <body className="bg-[#090909] text-[#F5F2EB] font-sans antialiased selection:bg-[#D4AF37] selection:text-[#090909] overflow-x-hidden min-h-screen">
         <I18nProvider>
           <CartProvider>
             {children}

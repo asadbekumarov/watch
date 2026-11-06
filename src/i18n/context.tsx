@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useSyncExternalStore, useCallback } from "react";
 import { uz } from "./uz";
 import { ru } from "./ru";
 
@@ -13,6 +13,42 @@ interface I18nContextType {
   t: TranslationDict;
 }
 
+const STORAGE_KEY = "vaqt_saroyi_lang";
+let memoryLang: Language = "uz";
+const listeners = new Set<() => void>();
+
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY && (e.newValue === "uz" || e.newValue === "ru")) {
+      memoryLang = e.newValue as Language;
+      callback();
+    }
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    listeners.delete(callback);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function getSnapshot(): Language {
+  if (typeof window === "undefined") return "uz";
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "uz" || saved === "ru") {
+      memoryLang = saved;
+    }
+  } catch {
+    // ignore storage error
+  }
+  return memoryLang;
+}
+
+function getServerSnapshot(): Language {
+  return "uz";
+}
+
 const I18nContext = createContext<I18nContextType>({
   lang: "uz",
   setLang: () => {},
@@ -20,23 +56,17 @@ const I18nContext = createContext<I18nContextType>({
 });
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Language>("uz");
+  const lang = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("vaqt_saroyi_lang") as Language;
-    if (saved === "uz" || saved === "ru") {
-      setLangState(saved);
-    }
-  }, []);
-
-  const setLang = (newLang: Language) => {
-    setLangState(newLang);
+  const setLang = useCallback((newLang: Language) => {
+    memoryLang = newLang;
     try {
-      localStorage.setItem("vaqt_saroyi_lang", newLang);
+      localStorage.setItem(STORAGE_KEY, newLang);
     } catch {
       // ignore
     }
-  };
+    listeners.forEach((l) => l());
+  }, []);
 
   const t = lang === "ru" ? ru : uz;
 
@@ -50,4 +80,3 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 export function useTranslation() {
   return useContext(I18nContext);
 }
-
