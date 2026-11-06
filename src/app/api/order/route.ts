@@ -22,7 +22,7 @@ function isRateLimited(ip: string): boolean {
     ipRateLimit.set(ip, { count: 1, resetTime: now + 60000 });
     return false;
   }
-  if (entry.count >= 10) {
+  if (entry.count >= 15) {
     return true;
   }
   entry.count += 1;
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     const ip = req.headers.get("x-forwarded-for") || "unknown";
     if (isRateLimited(ip)) {
       return NextResponse.json(
-        { success: false, error: "Juda ko'p so'rov yuborildi. Iltimos, biroz kuting." },
+        { success: false, error: "Juda ko'p so'rov yuborildi. Iltimos, bir daqiqadan so'ng urinib ko'ring." },
         { status: 429 }
       );
     }
@@ -43,25 +43,25 @@ export async function POST(req: NextRequest) {
 
     // 1. Honeypot check against automated spam bots
     if (body.honeypot) {
-      return NextResponse.json({ success: true, orderNumber: "CHRONOS-VIP" });
+      return NextResponse.json({ success: true, orderNumber: "ALFAJR-SPAM-PREVENTED" });
     }
 
     const {
       fullName,
       phone,
-      deliveryType = "delivery",
+      region = "Toshkent shahri",
+      deliveryType = "bts_express",
+      deliveryMethodLabel = "BTS Pochtasiga Bepul Yetkazish",
       address = "",
-      storeLocation = "",
-      deliveryTime = "1-2 soat",
       paymentMethod = "cash",
       comment = "",
       items = [],
     } = body;
 
-    // 2. Validate
+    // 2. Validate inputs
     if (!fullName || typeof fullName !== "string" || fullName.trim().length < 2) {
       return NextResponse.json(
-        { success: false, error: "Iltimos, ismingizni kiriting." },
+        { success: false, error: "Iltimos, ism va familiyangizni to'liq kiriting." },
         { status: 400 }
       );
     }
@@ -76,12 +76,12 @@ export async function POST(req: NextRequest) {
 
     if (!Array.isArray(items) || items.length === 0) {
       return NextResponse.json(
-        { success: false, error: "Buyurtma uchun kamida bitta soat tanlangan bo'lishi kerak." },
+        { success: false, error: "Buyurtma berish uchun kamida bitta soat tanlangan bo'lishi kerak." },
         { status: 400 }
       );
     }
 
-    // 3. Resolve items and calculate sum
+    // 3. Resolve items & calculate total sum
     let calculatedTotal = 0;
     const resolvedItems: {
       name: string;
@@ -92,14 +92,14 @@ export async function POST(req: NextRequest) {
 
     for (const it of items) {
       const prod = productsData.find((p) => p.id === it.productId);
-      const name = prod ? prod.name : it.name || "Shveytsariya Soati";
-      const unitPrice = Number(it.unitPrice) || (prod ? prod.price : 100000000);
+      const name = prod ? prod.name : it.name || "ALFAJR Soati";
+      const unitPrice = Number(it.unitPrice) || (prod ? prod.price : 1000000);
       const qty = Math.max(1, Number(it.quantity) || 1);
 
       const customParts: string[] = [];
       if (it.strap) customParts.push(`Braslet: ${it.strap}`);
       if (it.engraving) customParts.push(`Gravirovka: "${it.engraving}"`);
-      if (it.giftBox) customParts.push("VIP Sovg'a Qutisi");
+      if (it.giftBox) customParts.push("ALFAJR Sovg'a Qutisi");
 
       calculatedTotal += unitPrice * qty;
       resolvedItems.push({
@@ -110,22 +110,30 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 4. Generate Order Identifier
-    const orderNumber = `CHRONOS-${Math.floor(100000 + Math.random() * 900000)}`;
+    // 4. Generate ALFAJR Order Identifier
+    const randomSuffix = Math.floor(100000 + Math.random() * 900000);
+    const orderNumber = `ALFAJR-${randomSuffix}`;
 
     return NextResponse.json({
       success: true,
       orderNumber,
       totalAmount: calculatedTotal,
+      customer: {
+        fullName,
+        phone: cleanPhone,
+        region,
+        address,
+      },
       deliveryType,
-      address: deliveryType === "delivery" ? address : storeLocation,
-      deliveryTime,
+      deliveryMethodLabel,
       paymentMethod,
       comment,
       items: resolvedItems,
+      freeBtsDelivery: true,
+      serviceGuarantee: "@soatsoz_uzb",
     });
   } catch (error) {
-    console.error("Order processing error:", error);
+    console.error("ALFAJR order processing error:", error);
     return NextResponse.json(
       { success: false, error: "Buyurtmani qabul qilishda texnik xatolik yuz berdi." },
       { status: 500 }

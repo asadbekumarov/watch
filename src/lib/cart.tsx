@@ -29,7 +29,7 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | null>(null);
 
-const STORAGE_KEY = "chronos_horology_cart_v1";
+const STORAGE_KEY = "alfajr_soatlar_cart_v1";
 
 function generateCartItemId(productId: string, customization?: SelectedCustomization): string {
   if (!customization) return productId;

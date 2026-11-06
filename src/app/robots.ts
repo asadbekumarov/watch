@@ -7,7 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/checkout/"],
     },
-    sitemap: "https://vaqtsaroyi.uz/sitemap.xml",
+    sitemap: "https://alfajr.uz/sitemap.xml",
   };
 }
-

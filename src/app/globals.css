@@ -1,59 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Backgrounds: Deep Obsidian & Carbon Black ── */
-  --color-horology-obsidian: #090909;
-  --color-horology-surface: #111111;
-  --color-horology-card: #161616;
-  --color-horology-subtle: #1e1e1e;
+  /* ── Canvas & Pure Obsidian Backgrounds ── */
+  --color-obsidian: #090909;
+  --color-obsidian-surface: #111111;
+  --color-obsidian-card: #141414;
+  --color-obsidian-subtle: #18181b;
 
-  /* ── Typography: Platinum White & Brushed Steel Gray ── */
-  --color-horology-platinum: #f8f8f8;
-  --color-horology-white: #ffffff;
-  --color-horology-steel: #8e8e93;
-  --color-horology-steel-dark: #636366;
+  /* ── Typography: Pure Crisp White & Titanium Gray ── */
+  --color-swiss-white: #ffffff;
+  --color-swiss-platinum: #f4f4f5;
+  --color-titanium: #71717a;
+  --color-titanium-dark: #52525b;
+  --color-titanium-light: #a1a1aa;
 
-  /* ── Accents: 18K Champagne Gold ── */
-  --color-gold-primary: #d4af37;
+  /* ── The 5% Micro-Gold Accent ── */
+  --color-gold-accent: #d4af37;
   --color-gold-hover: #e5c158;
-  --color-gold-muted: rgba(212, 175, 55, 0.15);
-  --color-gold-glow: rgba(212, 175, 55, 0.25);
+  --color-gold-hairline: rgba(212, 175, 55, 0.4);
+  --color-gold-subtle: rgba(212, 175, 55, 0.15);
 
-  /* ── Borders & Glassmorphism ── */
-  --color-horology-border: rgba(212, 175, 55, 0.2);
-  --color-horology-border-subtle: rgba(255, 255, 255, 0.08);
-
-  /* ── Semantic Status Tones ── */
-  --color-horology-success: #34c759;
-  --color-horology-warning: #ff9f0a;
-  --color-horology-error: #ff453a;
-
-  /* ── Aliases & Backward-Compatible Mappings ── */
-  --color-espresso-base: #090909;
-  --color-espresso-surface: #111111;
-  --color-espresso-card: #161616;
-  --color-espresso-subtle: #1e1e1e;
-
-  --color-foam-primary: #f8f8f8;
-  --color-foam-muted: #e5e5ea;
-  --color-stone-muted: #8e8e93;
-  --color-stone-subtle: #636366;
-
-  --color-espresso-border: rgba(212, 175, 55, 0.2);
-  --color-espresso-border-subtle: rgba(255, 255, 255, 0.08);
-
-  --color-noir: #090909;
-  --color-noir-deep: #050505;
-  --color-noir-card: #161616;
-  --color-noir-surface: #111111;
-  --color-noir-border: rgba(212, 175, 55, 0.2);
-
-  --color-cream: #f8f8f8;
-  --color-cream-soft: #f2f2f7;
-  --color-cream-subtle: #e5e5ea;
-
-  --color-gold: #d4af37;
-  --color-gold-dark: #8c7322;
+  /* ── Micro-Borders ── */
+  --color-border-subtle: rgba(255, 255, 255, 0.07);
+  --color-border-hover: rgba(255, 255, 255, 0.18);
+  --color-border-gold: rgba(212, 175, 55, 0.35);
 
   --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -62,48 +32,44 @@
 :root {
   --bg-primary: #090909;
   --bg-surface: #111111;
-  --bg-card: #161616;
-  --text-primary: #f8f8f8;
-  --text-body: #d1d1d6;
-  --text-muted: #8e8e93;
+  --bg-card: #141414;
+  --text-primary: #ffffff;
+  --text-muted: #71717a;
   --accent-gold: #d4af37;
-  --accent-gold-hover: #e5c158;
-  --border-gold-subtle: rgba(212, 175, 55, 0.2);
-  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.07);
 }
 
-/* Custom Swiss Horology Obsidian Scrollbar */
+/* Swiss Horology Pure Obsidian Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   background: #090909;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e1e1e;
-  border-radius: 3px;
+  background: #18181b;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+  background: #27272a;
 }
 
-/* Accessible Focus Rings in 18K Champagne Gold */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Accessible Minimalist Focus Rings */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #d4af37 !important;
-  outline-offset: 3px !important;
-}
-
-/* Luxury Shimmer Glow for Badges and Metallic Accents */
-@keyframes goldShimmer {
-  0% { opacity: 0.3; transform: scale(0.98); }
-  50% { opacity: 0.8; transform: scale(1.02); }
-  100% { opacity: 0.3; transform: scale(0.98); }
-}
-
-.gold-glow-pulse {
-  animation: goldShimmer 3s ease-in-out infinite;
+  outline: 1px solid #d4af37 !important;
+  outline-offset: 2px !important;
 }

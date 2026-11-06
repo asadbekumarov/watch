@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { productsData } from "@/data/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://vaqtsaroyi.uz";
+  const baseUrl = "https://alfajr.uz";
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -34,4 +34,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticPages, ...productPages];
 }
-

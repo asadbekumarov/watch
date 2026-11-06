@@ -8,7 +8,7 @@ import { productsData, Product, WatchCategory } from "@/data/products";
 import { useTranslation } from "@/i18n";
 import { formatPrice } from "@/lib/formatPrice";
 import { useCart } from "@/lib/cart";
-import CoffeeCustomizerModal from "@/components/CoffeeCustomizerModal";
+import WatchCustomizerModal from "@/components/WatchCustomizerModal";
 import FloatingCartBar from "@/components/FloatingCartBar";
 import { ArrowUpDown, Plus, CheckCircle2, Watch, Search } from "lucide-react";
 
@@ -28,16 +28,15 @@ export default function CatalogClient() {
   const searchQuery = searchParams.get("q") || "";
   const sortBy = searchParams.get("sort") || "popular";
 
+  // Clean Swiss Typography Categories (NO EMOJIS)
   const categories: { id: "all" | WatchCategory; label: string }[] = [
     { id: "all", label: "Barcha Kolleksiya" },
-    { id: "diver", label: "G'avvoslik (Diver)" },
-    { id: "chronograph", label: "Xronograflar" },
-    { id: "haute", label: "Yuqori Horologiya" },
-    { id: "dress", label: "Klassik & Dress" },
-    { id: "aviation", label: "Aviator" },
+    { id: "alfajr", label: "Al-Fajr Islomiy" },
+    { id: "tsar_bomba", label: "Tsar Bomba Tonneau" },
+    { id: "philipp_plein", label: "Philipp Plein & Klassik" },
   ];
 
-  const brands = ["all", "Rolex", "Audemars Piguet", "Patek Philippe", "Omega", "Cartier", "Breitling", "Vacheron Constantin", "Jaeger-LeCoultre", "Grand Seiko", "TAG Heuer"];
+  const brands = ["all", "Al-Fajr", "Tsar Bomba", "Philipp Plein"];
 
   const updateQuery = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -63,7 +62,8 @@ export default function CatalogClient() {
           searchQuery &&
           !p.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
           !p.brand.toLowerCase().includes(searchQuery.toLowerCase()) &&
-          !p.description.toLowerCase().includes(searchQuery.toLowerCase())
+          !p.description.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          !p.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
         ) {
           return false;
         }
@@ -89,66 +89,82 @@ export default function CatalogClient() {
   };
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-12 pt-28 pb-32">
+    <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-12 pt-28 pb-32 text-[#FFFFFF]">
       {/* Breadcrumb & Title */}
-      <div className="mb-10 space-y-2 border-b border-[#D4AF37]/20 pb-6">
-        <div className="text-xs font-mono text-[#8E8E93] tracking-wider uppercase">
-          <Link href="/" className="hover:text-[#D4AF37] transition-colors">
+      <div className="mb-8 space-y-2 border-b border-white/[0.07] pb-6">
+        <div className="text-[11px] font-mono text-[#71717A] tracking-[0.16em] uppercase">
+          <Link href="/" className="hover:text-white transition-colors">
             Bosh sahifa
           </Link>{" "}
-          / <span className="text-[#F8F8F8]">Soatlar Kolleksiyasi</span>
+          / <span className="text-white">Soatlar Kolleksiyasi</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-normal text-[#F8F8F8] tracking-tight">
-          Shveytsariya Xronometrlari Katalogi
-        </h1>
-        <p className="text-sm sm:text-base text-[#8E8E93] max-w-[62ch]">
-          Dunyoning eng nufuzli Shveytsariya manufakturalarining afsonaviy modellari. Xalqaro COSC xronometr pasporti va to&apos;liq rasmiy kafolat bilan.
-        </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <h1 className="font-serif text-3xl sm:text-4xl font-normal text-[#FFFFFF] tracking-tight">
+              ALFAJR Soatlar Katalogi
+            </h1>
+            <p className="text-xs sm:text-sm text-[#71717A] mt-1 max-w-xl">
+              Al-Fajr Islomiy soatlari, Tsar Bomba va brend modellar. O&apos;zbekiston bo&apos;ylab BTS pochtalariga bepul yetkazish.
+            </p>
+          </div>
+
+          <div className="inline-flex items-center space-x-2 text-xs font-mono text-zinc-300 bg-white/[0.02] border border-white/[0.08] px-3.5 py-1.5 rounded-lg">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+            <span>BTS Express Bepul Yetkazish</span>
+          </div>
+        </div>
       </div>
 
-      {/* Search, Filter Bar and Sorting */}
+      {/* Control Bar: Categories, Brands, Search & Sort */}
       <div className="space-y-4 mb-8">
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-          {/* Search */}
-          <div className="relative flex-1 max-w-md">
-            <Search className="w-4 h-4 text-[#8E8E93] absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+        {/* Top Controls: Search & Sort */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="w-full sm:w-80 relative">
+            <Search className="w-4 h-4 text-[#71717A] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => updateQuery("q", e.target.value)}
               placeholder="Model yoki brend qidirish..."
-              className="w-full min-h-[46px] pl-11 pr-4 bg-[#111111] border border-white/10 rounded-xl text-xs sm:text-sm text-[#F8F8F8] placeholder-[#8E8E93]/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37]"
+              className="w-full min-h-[44px] pl-10 pr-4 bg-[#111111] border border-white/[0.08] rounded-lg text-xs sm:text-sm text-[#FFFFFF] placeholder-[#71717A]/60 focus:border-[#D4AF37] outline-none"
             />
           </div>
 
-          {/* Sort Dropdown */}
-          <div className="flex items-center space-x-2">
-            <ArrowUpDown className="w-4 h-4 text-[#D4AF37]" />
-            <select
-              value={sortBy}
-              onChange={(e) => updateQuery("sort", e.target.value)}
-              className="min-h-[46px] px-3.5 bg-[#111111] border border-white/10 text-xs font-mono text-[#F8F8F8] rounded-xl focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37]"
-            >
-              <option value="popular">Tavsiya etilgan (Mashhur)</option>
-              <option value="price_asc">Narx: Arzondan qimmatga</option>
-              <option value="price_desc">Narx: Qimmatdan arzonga</option>
-            </select>
+          <div className="flex items-center space-x-3 w-full sm:w-auto">
+            {/* Sort Selector */}
+            <div className="flex items-center space-x-2 bg-[#111111] border border-white/[0.08] rounded-lg px-3 py-2 text-xs font-mono text-zinc-300 w-full sm:w-auto">
+              <ArrowUpDown className="w-3.5 h-3.5 text-[#71717A]" />
+              <select
+                value={sortBy}
+                onChange={(e) => updateQuery("sort", e.target.value)}
+                className="bg-transparent text-xs font-mono text-[#FFFFFF] focus:outline-none"
+              >
+                <option value="popular" className="bg-[#111111]">
+                  Ommabopligi bo&apos;yicha
+                </option>
+                <option value="price_asc" className="bg-[#111111]">
+                  Narxi: Avval arzonroq
+                </option>
+                <option value="price_desc" className="bg-[#111111]">
+                  Narxi: Avval qimmatroq
+                </option>
+              </select>
+            </div>
           </div>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        {/* Category Tabs: Swiss Hairline Active Indicator */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-white/[0.05]">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
               <button
                 key={cat.id}
-                type="button"
                 onClick={() => updateQuery("category", cat.id)}
-                className={`min-h-[42px] px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider whitespace-nowrap transition-all border ${
+                className={`min-h-[40px] px-4 py-2 text-xs font-mono uppercase tracking-[0.14em] whitespace-nowrap transition-all border-b-2 -mb-[1px] ${
                   isActive
-                    ? "bg-[#D4AF37] text-[#090909] font-bold border-[#D4AF37]"
-                    : "bg-[#111111] text-[#8E8E93] border-white/10 hover:border-[#D4AF37]/40 hover:text-[#F8F8F8]"
+                    ? "border-[#D4AF37] text-[#FFFFFF] font-semibold"
+                    : "border-transparent text-[#71717A] hover:text-[#FFFFFF]"
                 }`}
               >
                 {cat.label}
@@ -157,57 +173,41 @@ export default function CatalogClient() {
           })}
         </div>
 
-        {/* Brand Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-mono">
-          <span className="text-[#8E8E93] shrink-0 mr-1">Brend:</span>
+        {/* Brand Filters */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-mono">
+          <span className="text-[#71717A] uppercase text-[10px] mr-1">Brend:</span>
           {brands.map((b) => {
-            const isSelected = selectedBrand === b;
+            const isSel = selectedBrand === b;
             return (
               <button
                 key={b}
-                type="button"
                 onClick={() => updateQuery("brand", b)}
-                className={`px-3 py-1.5 rounded-lg border whitespace-nowrap transition-colors ${
-                  isSelected
-                    ? "border-[#D4AF37] bg-[#D4AF37]/15 text-[#D4AF37] font-semibold"
-                    : "border-white/5 bg-[#161616] text-[#8E8E93] hover:text-[#F8F8F8]"
+                className={`px-3 py-1 rounded border transition-colors ${
+                  isSel
+                    ? "bg-white/[0.08] border-white/20 text-white font-medium"
+                    : "bg-transparent border-white/[0.06] text-[#71717A] hover:text-white"
                 }`}
               >
-                {b === "all" ? "Barcha Brendlar" : b}
+                {b === "all" ? "Barchasi" : b}
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* Results Count & Reset */}
-      <div className="flex items-center justify-between text-xs font-mono text-[#8E8E93] mb-6">
-        <span>Katalogda: {filteredProducts.length} ta xronometr mavjud</span>
-        {(selectedCategory !== "all" || selectedBrand !== "all" || searchQuery) && (
-          <button
-            type="button"
-            onClick={resetAllFilters}
-            className="text-[#D4AF37] hover:underline"
-          >
-            Filtrlarni tozalash
-          </button>
-        )}
-      </div>
-
-      {/* Grid (Compact 4-column Luxury Grid) */}
+      {/* Product Grid */}
       {filteredProducts.length === 0 ? (
-        <div className="py-20 text-center space-y-4 bg-[#111111] border border-white/10 rounded-2xl p-8">
-          <Watch className="w-10 h-10 text-[#8E8E93] mx-auto opacity-40" />
-          <h3 className="font-serif text-xl text-[#F8F8F8]">Soat topilmadi</h3>
-          <p className="text-xs text-[#8E8E93]">
-            Tanlangan filtrlarga mos model mavjud emas. Filtrlarni tozalab qaytadan ko&apos;ring.
+        <div className="py-20 text-center space-y-4 bg-[#111111] border border-white/[0.07] rounded-xl p-8">
+          <Watch className="w-10 h-10 text-[#71717A] mx-auto opacity-40" />
+          <h2 className="font-serif text-lg text-[#FFFFFF]">Soat topilmadi</h2>
+          <p className="text-xs text-[#71717A]">
+            Filtr parametrlarini o&apos;zgartirib ko&apos;ring yoki tozalang.
           </p>
           <button
-            type="button"
             onClick={resetAllFilters}
-            className="px-5 py-2 bg-[#D4AF37] text-[#090909] text-xs font-bold uppercase rounded-lg"
+            className="px-5 py-2.5 bg-white text-black text-xs font-mono uppercase rounded-lg"
           >
-            Barcha modellarni ko&apos;rish
+            Filtrni tozalash
           </button>
         </div>
       ) : (
@@ -217,23 +217,23 @@ export default function CatalogClient() {
             return (
               <div
                 key={product.id}
-                className="group bg-[#111111] hover:bg-[#161616] border border-white/10 hover:border-[#D4AF37]/50 rounded-2xl p-4 sm:p-4.5 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:-translate-y-1"
+                className="group bg-[#111111] hover:bg-[#141414] border border-white/[0.07] hover:border-[#D4AF37]/40 rounded-xl p-4 flex flex-col justify-between transition-all duration-300"
               >
                 <div>
                   {/* Top Meta */}
                   <div className="flex items-center justify-between text-xs font-mono mb-2">
-                    <span className="text-[10px] text-[#D4AF37] uppercase tracking-widest font-semibold">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#71717A]">
                       {product.brand}
                     </span>
-                    <span className="text-[10px] font-mono text-[#8E8E93]">
-                      {product.specs?.caseDiameter || "41 mm"}
+                    <span className="text-[10px] font-mono text-[#71717A]">
+                      {product.specs?.caseDiameter}
                     </span>
                   </div>
 
                   {/* Image */}
                   <Link
                     href={`/watch/${product.slug}`}
-                    className="block relative aspect-[4/3] w-full bg-[#161616] rounded-xl overflow-hidden cursor-pointer my-2 border border-white/5"
+                    className="block relative aspect-[4/3] w-full bg-[#090909] rounded-lg overflow-hidden cursor-pointer my-2 border border-white/[0.05]"
                   >
                     <Image
                       src={product.images[0]}
@@ -243,61 +243,63 @@ export default function CatalogClient() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
 
-                    <div className="absolute bottom-2 left-2 bg-[#090909]/90 backdrop-blur-md px-2 py-0.5 rounded-md border border-[#D4AF37]/30 text-[9px] font-mono uppercase tracking-wider text-[#D4AF37]">
-                      {product.specs?.waterResistance || "100m"}
+                    <div className="absolute bottom-2 left-2 bg-[#090909]/90 backdrop-blur-md px-2 py-0.5 rounded text-[9px] font-mono uppercase tracking-wider text-zinc-300 border border-white/[0.08]">
+                      {product.specs?.waterResistance || "5 ATM"}
                     </div>
                   </Link>
 
                   {/* Title & Specs */}
                   <div className="space-y-1 mt-2">
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-[#71717A]">
+                      Ref. {product.referenceNumber}
+                    </div>
+
                     <Link
                       href={`/watch/${product.slug}`}
-                      className="block font-serif text-base sm:text-lg text-[#F8F8F8] group-hover:text-[#D4AF37] transition-colors cursor-pointer font-normal line-clamp-1"
+                      className="block font-serif text-base text-[#FFFFFF] group-hover:text-zinc-200 transition-colors cursor-pointer font-normal line-clamp-1"
                     >
                       {product.name}
                     </Link>
 
-                    <div className="text-[11px] font-mono text-[#8E8E93] line-clamp-1">
+                    <div className="text-[11px] font-mono text-[#71717A] line-clamp-1">
                       {product.specs?.movement}
                     </div>
                   </div>
                 </div>
 
-                {/* Bottom Pricing & Action Button */}
-                <div className="pt-3 mt-3 border-t border-white/10 flex items-center justify-between gap-2">
+                {/* Bottom Pricing & Action */}
+                <div className="pt-3 mt-3 border-t border-white/[0.07] flex items-center justify-between gap-2">
                   <div>
-                    <span className="block text-[9px] font-mono text-[#8E8E93] uppercase">
-                      Qiymati
+                    <span className="block text-[9px] font-mono text-[#71717A] uppercase tracking-wider">
+                      Narxi
                     </span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-[#F8F8F8]">
+                    <span className="font-mono text-sm sm:text-base font-medium text-[#FFFFFF]">
                       {formatPrice(product.price, lang)}
                     </span>
                   </div>
 
-                  <div className="flex items-center space-x-1.5">
-                    <button
-                      type="button"
-                      onClick={() => handleProductAction(product)}
-                      className={`min-h-[38px] px-3 rounded-lg text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center space-x-1 shadow-sm ${
-                        isJustAdded
-                          ? "bg-emerald-600 text-white"
-                          : "bg-[#D4AF37] hover:bg-[#E5C158] text-[#090909]"
-                      }`}
-                      title="Konfiguratsiya va Savat"
-                    >
-                      {isJustAdded ? (
-                        <>
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          <span>Qo&apos;shildi</span>
-                        </>
-                      ) : (
-                        <>
-                          <Plus className="w-3.5 h-3.5" />
-                          <span>Tanlash</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleProductAction(product)}
+                    className={`min-h-[36px] px-3.5 rounded-md text-xs font-mono uppercase tracking-wider transition-all flex items-center justify-center space-x-1 ${
+                      isJustAdded
+                        ? "bg-white text-black font-semibold"
+                        : "bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] hover:border-[#D4AF37]/50 text-white"
+                    }`}
+                    title="Savatga qo'shish"
+                  >
+                    {isJustAdded ? (
+                      <>
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>Qo&apos;shildi</span>
+                      </>
+                    ) : (
+                      <>
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Tanlash</span>
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
             );
@@ -310,7 +312,7 @@ export default function CatalogClient() {
 
       {/* Customizer Modal */}
       {customizingProduct && (
-        <CoffeeCustomizerModal
+        <WatchCustomizerModal
           product={customizingProduct}
           onClose={() => setCustomizingProduct(null)}
           lang={lang}

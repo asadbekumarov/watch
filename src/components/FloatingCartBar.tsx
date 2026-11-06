@@ -14,33 +14,33 @@ export default function FloatingCartBar() {
   if (totalCount === 0) return null;
 
   return (
-    <div className="fixed bottom-4 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-auto z-40 animate-in slide-in-from-bottom duration-300">
+    <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] inset-x-3.5 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-auto z-40 animate-in slide-in-from-bottom-5 duration-300">
       <Link
         href="/cart"
-        className="flex items-center justify-between gap-4 bg-[#111111]/95 hover:bg-[#161616] backdrop-blur-xl border border-[#D4AF37]/50 rounded-2xl p-3.5 sm:px-6 shadow-[0_12px_40px_rgba(0,0,0,0.9)] text-[#F8F8F8] group transition-all hover:scale-[1.02]"
+        className="flex items-center justify-between gap-4 sm:gap-6 bg-[#090909]/95 hover:bg-[#141414] active:scale-[0.98] backdrop-blur-2xl border border-white/[0.15] rounded-xl p-3 sm:px-6 shadow-[0_12px_45px_rgba(0,0,0,0.95)] text-[#FFFFFF] group transition-all touch-manipulation"
         aria-label={`${t.nav.cart} (${totalCount})`}
       >
-        <div className="flex items-center space-x-3">
-          <div className="relative w-10 h-10 rounded-xl bg-[#D4AF37] flex items-center justify-center text-[#090909]">
-            <ShoppingBag className="w-5 h-5" />
-            <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#D4AF37] text-[#090909] text-[10px] font-mono font-bold rounded-full flex items-center justify-center border-2 border-[#111111]">
+        <div className="flex items-center space-x-3 sm:space-x-3.5 min-w-0">
+          <div className="relative w-9 h-9 rounded-lg bg-white/[0.05] border border-white/[0.12] flex items-center justify-center text-white shrink-0">
+            <ShoppingBag className="w-4 h-4 text-zinc-300" />
+            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-white text-[#090909] text-[9px] font-mono font-bold rounded-full flex items-center justify-center border border-[#090909]">
               {totalCount}
             </span>
           </div>
 
-          <div className="text-left">
-            <span className="block text-[11px] font-mono uppercase tracking-wider text-[#8E8E93]">
+          <div className="text-left truncate">
+            <span className="block text-[10px] font-mono uppercase tracking-[0.14em] text-[#71717A] truncate">
               Savatda {totalCount} ta soat
             </span>
-            <span className="font-mono text-base font-bold text-[#D4AF37]">
+            <span className="font-mono text-sm sm:text-base font-medium text-white truncate">
               {formatPrice(totalAmount, lang)}
             </span>
           </div>
         </div>
 
-        <div className="flex items-center space-x-1.5 bg-[#D4AF37] hover:bg-[#E5C158] text-[#090909] text-xs uppercase tracking-wider font-bold px-4 py-2.5 rounded-xl transition-colors shadow-md">
+        <div className="flex items-center space-x-1.5 bg-white hover:bg-zinc-200 text-[#090909] text-xs font-mono uppercase tracking-[0.14em] font-medium px-4 py-2.5 rounded-lg transition-colors shrink-0">
           <span>{t.cart.proceedToCheckout || "Buyurtma"}</span>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="w-3.5 h-3.5" />
         </div>
       </Link>
     </div>

@@ -6,7 +6,8 @@ export interface StoreAddress {
 }
 
 export interface StoreDeliveryInfo {
-  estimatedMinutes: string;
+  btsDelivery: string;
+  tashkentDelivery: string;
   freeDeliveryThreshold: number;
   standardFee: number;
   coverageArea: string;
@@ -18,12 +19,15 @@ export interface StoreInfo {
   since: number;
   addresses: StoreAddress[];
   phone: string;
+  phoneSecondary: string;
   telegram: string;
   instagram: string;
+  serviceCenter: string;
+  followersCount: string;
   workingHours: string;
   mapsLink: string;
   delivery: StoreDeliveryInfo;
-  heritageStory: {
+  serviceStory: {
     origin: string;
     guarantee: string;
     services: string;
@@ -31,38 +35,36 @@ export interface StoreInfo {
 }
 
 export const storeData: StoreInfo = {
-  name: "Chronos Genève | Haute Horlogerie",
-  tagline: "O'zbekistondagi rasmiy Shveytsariya lyuks soatlari butigi va maxsus xizmat",
-  since: 2018,
+  name: "ALFAJR — Soatlar Olami",
+  tagline: "Islomiy Al-Fajr soatlari, Tsar Bomba va brend xronometrlarning O'zbekistondagi ishonchli do'koni",
+  since: 2017,
   addresses: [
     {
-      address: "Toshkent, Amir Temur shoh ko'chasi 107B",
-      type: "Markaziy VIP Showroom & Xizmat Markazi",
-      district: "Yunusobod",
-      landmark: "Wyndham Tashkent mehmonxonasi yonida",
-    },
-    {
-      address: "Toshkent, Mirobod ko'chasi 21",
-      type: "Zarafshon Exclusive Lounge",
-      district: "Mirobod",
-      landmark: "Premier Hall ro'parasida",
+      address: "Toshkent sh., Kichik Xalqa Yo'li, 19",
+      type: "Bosh do'kon & Ko'rgazma zali",
+      district: "Yakkasaroy / Kichik Xalqa",
+      landmark: "Kichik Xalqa yo'li yoqasida, 09:00 dan 21:00 gacha",
     },
   ],
-  phone: "+998 71 200 88 00",
-  telegram: "@chronos_geneve",
-  instagram: "@chronos.uz",
-  workingHours: "Har kuni 10:00 - 21:00 (VIP qabul oldindan yozilish orqali)",
-  mapsLink: "https://maps.google.com/?q=Toshkent+Amir+Temur+107B",
+  phone: "+998 71 200 83 00",
+  phoneSecondary: "+998 99 831 00 99",
+  telegram: "@alfajr_uz",
+  instagram: "@alfajr_uz",
+  serviceCenter: "@soatsoz_uzb",
+  followersCount: "235K+",
+  workingHours: "Har kuni 09:00 - 21:00 (dam olish kunlarisiz)",
+  mapsLink: "https://maps.google.com/?q=Toshkent+Kichik+Xalqa+Yoli+19",
   delivery: {
-    estimatedMinutes: "1-2 soat ichida",
-    freeDeliveryThreshold: 0, // All watches are delivered with complimentary VIP armored courier
+    btsDelivery: "O'zbekiston bo'ylab BTS Pochta filiallariga mutlaqo BEPUL yetkazib berish",
+    tashkentDelivery: "Toshkent shahri bo'ylab tezkor kuryer xizmati (2-3 soatda eshikkacha)",
+    freeDeliveryThreshold: 0,
     standardFee: 0,
-    coverageArea: "Toshkent shahri va O'zbekiston bo'ylab maxsus zirhli inkassatsiya kuryerida",
+    coverageArea: "O'zbekistonning barcha 14 ta hududi (BTS Express pochtalari) va Toshkent shahri",
   },
-  heritageStory: {
-    origin: "Barcha taqdim etilgan soatlar Jeneva va Le Lokldagi rasmiy ishlab chiqaruvchilardan to'g'ridan-to'g'ri keltiriladi.",
-    guarantee: "Har bir soatga xalqaro COSC xronometr sertifikati va 5 yillik rasmiy ishlab chiqaruvchi kafolati taqdim etiladi.",
-    services: "Bepul o'lchov, remeshok almashtirish, xususiy gravirovka va bir umrlik profilaktika xizmati.",
+  serviceStory: {
+    origin: "ALFAJR — O'zbekistonda 235 mingdan ortiq soat ixlosmandlarini birlashtirgan, ishonchli va asl soatlar maskani.",
+    guarantee: "Barcha soatlarga 1 yillik rasmiy kafolat va xalqaro sifat pasporti taqdim etiladi.",
+    services: "@soatsoz_uzb ixtisoslashtirilgan rasmiy servis markazi orqali bepul sozlash, batareya almashtirish, o'lchov olish va texnik xizmat ko'rsatiladi.",
   },
 };
 
