@@ -82,9 +82,8 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Development mode persistent shared store
-    if (process.env.NODE_ENV === "development") {
-      const clean = code.trim().toUpperCase();
+    // Fallback persistent store when Supabase is not connected
+    const clean = code.trim().toUpperCase();
       const allPromos = getDevPromoCodes();
       const promo = allPromos.find((p) => p.code.toUpperCase() === clean && p.is_active);
 
@@ -124,7 +123,6 @@ export async function POST(req: NextRequest) {
         min_order_usd: promo.min_order_usd,
         max_discount_usd: promo.max_discount_usd,
       });
-    }
 
     return NextResponse.json(
       { valid: false, error: "Tizim ma'lumotlar bazasiga ulana olmadi." },

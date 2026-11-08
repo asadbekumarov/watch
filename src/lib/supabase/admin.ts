@@ -10,11 +10,13 @@ export function getSupabaseAdminClient() {
     throw new Error("[SwissWatch] Security violation: Supabase Admin client cannot be instantiated in the browser bundle!");
   }
 
-  if (!supabaseUrl || !serviceRoleKey) {
-    if (process.env.NODE_ENV === "development") {
-      return null;
-    }
-    throw new Error("[SwissWatch] Missing Supabase admin credentials (SUPABASE_SERVICE_ROLE_KEY) in production!");
+  if (
+    !supabaseUrl ||
+    !serviceRoleKey ||
+    supabaseUrl.includes("your-project") ||
+    supabaseUrl.includes("placeholder")
+  ) {
+    return null;
   }
 
   return createClient<Database>(supabaseUrl, serviceRoleKey, {

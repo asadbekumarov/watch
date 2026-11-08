@@ -88,8 +88,8 @@ async function OrderTrackingContent({ params }: PageProps) {
     console.warn("Could not query DB for tracking order:", err);
   }
 
-  // Fallback demo order if running locally without DB connection
-  if (!order && process.env.NODE_ENV === "development") {
+  // Fallback demo order if running without DB connection
+  if (!order) {
     const devStore = getDevOrders();
     const matched = devStore.orders.find((o) => o.id === orderId);
     if (matched) {

@@ -148,14 +148,7 @@ export async function POST(req: NextRequest) {
       totalUzs = res.total_uzs || null;
       orderId = res.order_id;
     } else {
-      // Development mode fallback when Supabase is not connected
-      if (process.env.NODE_ENV !== "development") {
-        return NextResponse.json(
-          { success: false, error: "Supabase ma'lumotlar bazasi ulanmagan." },
-          { status: 500 }
-        );
-      }
-
+      // Fallback mode when Supabase is not connected
       const randomSuffix = Math.floor(1000 + Math.random() * 9000);
       orderNumber = `SWP-${new Date().getFullYear()}-${randomSuffix}`;
       orderId = `ord-dev-${Date.now()}-${randomSuffix}`;

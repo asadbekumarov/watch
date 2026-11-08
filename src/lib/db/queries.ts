@@ -20,7 +20,10 @@ type HeroBannerRow = Database["public"]["Tables"]["hero_banners"]["Row"];
 
 const isDevOrBuild =
   process.env.NODE_ENV === "development" ||
-  process.env.NEXT_PHASE === "phase-production-build";
+  process.env.NEXT_PHASE === "phase-production-build" ||
+  !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  process.env.NEXT_PUBLIC_SUPABASE_URL.includes("your-project") ||
+  process.env.NEXT_PUBLIC_SUPABASE_URL.includes("placeholder");
 
 // Map database product row to Storefront Product model
 function mapDbProductToProduct(row: ProductRow): Product {

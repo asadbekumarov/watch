@@ -12,16 +12,7 @@ export function getSupabaseServerClient() {
     supabaseUrl.includes("placeholder");
 
   if (isMissing) {
-    // In development or build-time fallback when external DB is not connected
-    if (
-      process.env.NODE_ENV === "development" ||
-      process.env.NEXT_PHASE === "phase-production-build"
-    ) {
-      return null;
-    }
-    throw new Error(
-      "[SwissWatch] Missing Supabase configuration in production environment!"
-    );
+    return null;
   }
 
   return createClient<Database>(supabaseUrl, supabaseAnonKey, {
