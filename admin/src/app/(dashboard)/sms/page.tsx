@@ -1,5 +1,6 @@
 import React from "react";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import { getDevSmsLog } from "@shared/devStore";
 import SmsClient, { SmsLogItem } from "./SmsClient";
 import { MessageSquare } from "lucide-react";
@@ -29,7 +30,7 @@ export default async function SmsPage() {
     console.warn("SMS log fetch warning in dev:", err);
   }
 
-  if (logs.length === 0 && process.env.NODE_ENV === "development") {
+  if (logs.length === 0 && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     logs = getDevSmsLog() as unknown as SmsLogItem[];
   }
 

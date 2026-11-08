@@ -1,5 +1,6 @@
 import React from "react";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import HeroForm from "./HeroForm";
 import { getDevHero } from "@shared/devStore";
 import type { Database } from "@shared/types/database.types";
@@ -24,7 +25,7 @@ export default async function HeroPage() {
     console.warn("Hero fetch warning in dev:", err);
   }
 
-  if (!hero && process.env.NODE_ENV === "development") {
+  if (!hero && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     hero = getDevHero();
   }
 

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import { Plus, Edit, Watch } from "lucide-react";
 import ProductRowActions from "./ProductRowActions";
 import { getDevProducts } from "@shared/devStore";
@@ -27,7 +28,7 @@ export default async function ProductsPage() {
     console.warn("Products fetch warning in dev:", err);
   }
 
-  if (products.length === 0 && process.env.NODE_ENV === "development") {
+  if (products.length === 0 && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     products = getDevProducts();
   }
 

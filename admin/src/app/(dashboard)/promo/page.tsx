@@ -1,5 +1,6 @@
 import React from "react";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import PromoClient from "./PromoClient";
 import { getDevPromoCodes } from "@shared/devStore";
 import type { Database } from "@shared/types/database.types";
@@ -24,7 +25,7 @@ export default async function PromoCodesPage() {
     console.warn("Promo codes fetch warning in dev:", err);
   }
 
-  if (promoCodes.length === 0 && process.env.NODE_ENV === "development") {
+  if (promoCodes.length === 0 && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     promoCodes = getDevPromoCodes();
   }
 

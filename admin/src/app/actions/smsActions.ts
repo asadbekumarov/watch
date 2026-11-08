@@ -43,7 +43,7 @@ export async function getSmsLogs(filters?: {
 
     return { success: true, logs: data || [] };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       return { success: true, logs: [] };
     }
     return { error: err instanceof Error ? err.message : "Xatolik yuz berdi" };
@@ -74,7 +74,7 @@ export async function resendSmsAction(smsLogId: number) {
     revalidatePath("/sms");
     return res;
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       return { success: true, provider: "mock" as const, messageId: `mock-resend-${Date.now()}` };
     }
     return { success: false, provider: "mock" as const, error: err instanceof Error ? err.message : "Xatolik" };

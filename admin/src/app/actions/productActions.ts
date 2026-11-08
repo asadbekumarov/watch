@@ -51,7 +51,7 @@ export async function toggleProductActive(id: string, currentState: boolean) {
     revalidatePath("/products");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("toggleProductActive fallback in dev:", err);
       revalidatePath("/products");
       return { success: true };
@@ -162,7 +162,7 @@ export async function saveProduct(formData: FormData) {
     revalidatePath("/products");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("saveProduct fallback in dev:", err);
       revalidatePath("/products");
       return { success: true };
@@ -202,7 +202,7 @@ export async function deleteProduct(id: string) {
     revalidatePath("/products");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       deleteDevProduct(id);
       revalidatePath("/products");
       return { success: true };

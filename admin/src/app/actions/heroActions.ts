@@ -60,7 +60,7 @@ export async function updateHeroBanner(formData: FormData) {
     revalidatePath("/hero");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("updateHeroBanner dev fallback:", err);
       revalidatePath("/hero");
       return { success: true };

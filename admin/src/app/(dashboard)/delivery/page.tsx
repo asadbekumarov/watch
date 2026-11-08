@@ -1,5 +1,6 @@
 import React from "react";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import DeliveryClient from "./DeliveryClient";
 import { getDevDeliveryMethods } from "@shared/devStore";
 import type { Database } from "@shared/types/database.types";
@@ -24,7 +25,7 @@ export default async function DeliverySettingsPage() {
     console.warn("Delivery fetch warning in dev:", err);
   }
 
-  if (methods.length === 0 && process.env.NODE_ENV === "development") {
+  if (methods.length === 0 && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     methods = getDevDeliveryMethods();
   }
 

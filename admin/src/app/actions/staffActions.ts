@@ -74,7 +74,7 @@ export async function createStaffMember(formData: FormData) {
     revalidatePath("/staff");
     return { success: true };
   } catch (err: unknown) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("createStaffMember dev fallback:", err);
       revalidatePath("/staff");
       return { success: true };
@@ -126,7 +126,7 @@ export async function toggleStaffActive(id: string, currentActive: boolean) {
     revalidatePath("/staff");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("toggleStaffActive dev fallback:", err);
       revalidatePath("/staff");
       return { success: true };

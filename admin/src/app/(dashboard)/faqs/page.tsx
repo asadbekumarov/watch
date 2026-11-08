@@ -1,5 +1,6 @@
 import React from "react";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import FaqManager from "./FaqManager";
 import { getDevFaqs } from "@shared/devStore";
 import type { Database } from "@shared/types/database.types";
@@ -24,7 +25,7 @@ export default async function FaqsPage() {
     console.warn("Faqs fetch warning in dev:", err);
   }
 
-  if (faqs.length === 0 && process.env.NODE_ENV === "development") {
+  if (faqs.length === 0 && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     faqs = getDevFaqs();
   }
 

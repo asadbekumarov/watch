@@ -80,7 +80,7 @@ export async function createPromoCode(payload: {
     revalidatePath("/promo");
     return { success: true, data };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("createPromoCode dev fallback:", err);
       revalidatePath("/promo");
       return { success: true };
@@ -150,7 +150,7 @@ export async function updatePromoCode(
     revalidatePath("/promo");
     return { success: true, data };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("updatePromoCode dev fallback:", err);
       revalidatePath("/promo");
       return { success: true };
@@ -207,7 +207,7 @@ export async function deletePromoCode(id: number) {
     revalidatePath("/promo");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("deletePromoCode dev fallback:", err);
       revalidatePath("/promo");
       return { success: true };

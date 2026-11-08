@@ -70,7 +70,7 @@ export async function updateDeliveryMethod(
     revalidatePath("/delivery");
     return { success: true, data };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("updateDeliveryMethod dev fallback:", err);
       revalidatePath("/delivery");
       return { success: true };
@@ -118,7 +118,7 @@ export async function toggleDeliveryMethodEnabled(id: string, isEnabled: boolean
     revalidatePath("/delivery");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("toggleDeliveryMethodEnabled dev fallback:", err);
       revalidatePath("/delivery");
       return { success: true };

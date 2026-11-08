@@ -50,7 +50,7 @@ export async function logAuditEvent({
       ip_address: ipAddress,
     });
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       saveDevAuditLog({
         actor_id: "dev-owner-id",
         actor_email: "watch@gmail.com",

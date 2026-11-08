@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import {
   ShoppingBag,
   Clock,
@@ -44,7 +45,7 @@ export default async function DashboardPage() {
     console.warn("DashboardPage data warning in dev:", err);
   }
 
-  if (products.length === 0 && process.env.NODE_ENV === "development") {
+  if (products.length === 0 && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     products = FALLBACK_PRODUCTS;
   }
 

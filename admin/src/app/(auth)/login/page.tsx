@@ -49,8 +49,7 @@ export default function LoginPage() {
       document.cookie = "swp_dev_admin_session=owner; path=/; max-age=86400; SameSite=Lax";
       localStorage.removeItem("swp_admin_attempts");
       localStorage.removeItem("swp_admin_lockout");
-      router.push("/");
-      router.refresh();
+      window.location.href = "/";
       return;
     }
 
@@ -96,8 +95,7 @@ export default function LoginPage() {
           return;
         }
 
-        router.push("/");
-        router.refresh();
+        window.location.href = "/";
       }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Tizimga kirishda xatolik yuz berdi.";

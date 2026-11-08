@@ -1,5 +1,6 @@
 import React from "react";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import { getDevAuditLog } from "@shared/devStore";
 import { User, Clock } from "lucide-react";
 import type { Database } from "@shared/types/database.types";
@@ -23,7 +24,7 @@ export default async function AuditPage() {
     console.warn("Audit logs fetch warning in dev:", err);
   }
 
-  if (logs.length === 0 && process.env.NODE_ENV === "development") {
+  if (logs.length === 0 && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     logs = getDevAuditLog() as unknown as AuditLogRow[];
   }
 

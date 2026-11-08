@@ -78,7 +78,7 @@ export async function updateBranch(formData: FormData) {
     revalidatePath("/branches");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("updateBranch fallback in dev:", err);
       revalidatePath("/branches");
       return { success: true };

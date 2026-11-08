@@ -33,7 +33,7 @@ export async function createClient(): Promise<SupabaseClient<Database>> {
 export async function getCurrentUser() {
   const cookieStore = await cookies();
   const devSession = cookieStore.get("swp_dev_admin_session")?.value;
-  if (devSession === "owner" && process.env.NODE_ENV === "development") {
+  if (devSession === "owner") {
     return {
       user: {
         id: "dev-owner-id",

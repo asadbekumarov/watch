@@ -95,7 +95,7 @@ export async function updateSiteSettings(formData: FormData) {
     revalidatePath("/settings");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("updateSiteSettings dev fallback:", err);
       revalidatePath("/settings");
       return { success: true };

@@ -74,7 +74,7 @@ export async function saveFaq(formData: FormData) {
     revalidatePath("/faqs");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("saveFaq dev fallback:", err);
       revalidatePath("/faqs");
       return { success: true };
@@ -115,7 +115,7 @@ export async function deleteFaq(id: number) {
     revalidatePath("/faqs");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("deleteFaq dev fallback:", err);
       revalidatePath("/faqs");
       return { success: true };

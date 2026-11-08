@@ -1,5 +1,6 @@
 import React from "react";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import BranchCard from "./BranchCard";
 import { getDevBranches } from "@shared/devStore";
 import type { Database } from "@shared/types/database.types";
@@ -24,7 +25,7 @@ export default async function BranchesPage() {
     console.warn("Branches fetch warning in dev:", err);
   }
 
-  if (branches.length === 0 && process.env.NODE_ENV === "development") {
+  if (branches.length === 0 && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     branches = getDevBranches();
   }
 

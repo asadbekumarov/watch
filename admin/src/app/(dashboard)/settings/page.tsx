@@ -1,5 +1,6 @@
 import React from "react";
 import { createClient, requireAuth } from "@/lib/supabase/server";
+import { isSupabaseDevFallback } from "@/lib/supabase/devFallback";
 import SettingsForm from "./SettingsForm";
 import { getDevSettings } from "@shared/devStore";
 import type { Database } from "@shared/types/database.types";
@@ -22,7 +23,7 @@ export default async function SettingsPage() {
     console.warn("Settings fetch warning in dev:", err);
   }
 
-  if (!settings && process.env.NODE_ENV === "development") {
+  if (!settings && (process.env.NODE_ENV === "development" || isSupabaseDevFallback())) {
     settings = getDevSettings();
   }
 

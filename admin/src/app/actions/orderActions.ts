@@ -107,7 +107,7 @@ export async function advanceOrderStatus({
     revalidatePath("/");
     return { success: true, data };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("advanceOrderStatus dev fallback:", err);
       revalidatePath("/orders");
       revalidatePath("/");
@@ -171,7 +171,7 @@ export async function updateOrderInternalNotes(orderId: string, notes: string) {
     revalidatePath("/orders");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("updateOrderInternalNotes dev fallback:", err);
       revalidatePath("/orders");
       return { success: true };
@@ -232,7 +232,7 @@ export async function updateOrderEstimatedReadyDate(orderId: string, readyDate: 
     revalidatePath("/orders");
     return { success: true };
   } catch (err) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" || isSupabaseDevFallback()) {
       console.warn("updateOrderEstimatedReadyDate dev fallback:", err);
       revalidatePath("/orders");
       return { success: true };
