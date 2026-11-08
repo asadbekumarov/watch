@@ -5,14 +5,17 @@
 
 import { sendEskizSms } from "./eskiz";
 import { saveDevSmsLog } from "../devStore";
-import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "../types/database.types";
+
+export interface SupabaseClientLike {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  from: (table: string) => any;
+}
 
 export interface SendSmsParams {
   phone: string;
   message: string;
   orderId?: string | null;
-  supabaseClient?: SupabaseClient<Database> | null;
+  supabaseClient?: SupabaseClientLike | null;
 }
 
 export interface SendSmsResult {
@@ -97,7 +100,7 @@ export async function dispatchSms(params: SendSmsParams): Promise<SendSmsResult>
  */
 export async function resendSmsRecord(
   smsLogId: number,
-  supabaseClient: SupabaseClient<Database>
+  supabaseClient: SupabaseClientLike
 ): Promise<SendSmsResult> {
   // Fetch existing SMS record
   const { data: record, error: fetchErr } = await supabaseClient
