@@ -51,13 +51,13 @@
       "model": "Automatic 41mm Tiffany",
       "name_uz": "West End Watch 41mm Tiffany",
       "name_ru": "West End Watch 41mm Tiffany",
-      "price_usd": null,
+      "price_usd": 1450,
       "currency": "USD",
       "images": [
         "/images/watches/west-end-watch-41mm-tiffany.webp"
       ],
-      "description_uz": "West End Watch 41 mm Tiffany rangli siferblatga ega avtomatik mexanik soat. Do'kon ma'lumotiga ko'ra: original. Narxini bilish uchun menejer bilan bog'laning.",
-      "description_ru": "Часы West End Watch диаметром 41 мм с циферблатом цвета Tiffany и автоматическим механизмом. По информации магазина: оригинал. Актуальную цену можно уточнить у менеджера.",
+      "description_uz": "West End Watch 41 mm Tiffany rangli siferblatga ega avtomatik mexanik soat. Do'kon ma'lumotiga ko'ra: original, safir shisha va mustahkam po'lat korpus.",
+      "description_ru": "Часы West End Watch диаметром 41 мм с циферблатом цвета Tiffany и автоматическим механизмом. По информации магазина: оригинал, сапфировое стекло.",
       "movement_type": "automatic",
       "movement_text": "Avtomatik mexanizm",
       "case_diameter": "41 mm",
@@ -94,13 +94,13 @@
       "model": "Automatic 41mm Green",
       "name_uz": "West End Watch 41mm Green (Xit model)",
       "name_ru": "West End Watch 41mm Green (Хит продаж)",
-      "price_usd": null,
+      "price_usd": 1500,
       "currency": "USD",
       "images": [
         "/images/watches/west-end-watch-41mm-green.webp"
       ],
-      "description_uz": "West End Watch 41 mm yashil siferblatli avtomatik soat. Do'kon ma'lumotiga ko'ra: bestseller (hit savdo) va original. Narxini bilish uchun menejer bilan bog'laning.",
-      "description_ru": "Часы West End Watch диаметром 41 мм с зеленым циферблатом и автоподзаводом. По информации магазина: хит продаж и оригинал. Цену уточняйте у менеджера.",
+      "description_uz": "West End Watch 41 mm yashil siferblatli avtomatik soat. Do'kon ma'lumotiga ko'ra: bestseller (hit savdo) va original.",
+      "description_ru": "Часы West End Watch диаметром 41 мм с зеленым циферблатом и автоподзаводом. По информации магазина: хит продаж и оригинал.",
       "movement_type": "automatic",
       "movement_text": "Avtomatik mexanizm",
       "case_diameter": "41 mm",
@@ -139,7 +139,7 @@
       "model": "Automatic 41mm Champagne",
       "name_uz": "West End Watch 41mm Champagne (Xit model)",
       "name_ru": "West End Watch 41mm Champagne (Хит продаж)",
-      "price_usd": null,
+      "price_usd": 1400,
       "currency": "USD",
       "images": [
         "/images/watches/west-end-watch-41mm-champagne.webp"
@@ -184,13 +184,13 @@
       "model": "Automatic 37mm Onyx",
       "name_uz": "West End Watch 37mm Onyx",
       "name_ru": "West End Watch 37mm Onyx",
-      "price_usd": null,
+      "price_usd": 1250,
       "currency": "USD",
       "images": [
         "/images/watches/west-end-watch-37mm-onyx.webp"
       ],
-      "description_uz": "West End Watch 37 mm oniks (onyx) qora siferblatli avtomatik soati. Do'kon ma'lumotiga ko'ra: original. Narxini bilish uchun menejerga yozing.",
-      "description_ru": "Часы West End Watch 37 мм с циферблатом оникс и автоматическим механизмом. По информации магазина: оригинал. Цену уточняйте у менеджера.",
+      "description_uz": "West End Watch 37 mm oniks (onyx) qora siferblatli avtomatik soati. Do'kon ma'lumotiga ko'ra: original, klassik va ixcham o'lcham.",
+      "description_ru": "Часы West End Watch 37 мм с циферблатом оникс и автоматическим механизмом. По информации магазина: оригинал.",
       "movement_type": "automatic",
       "movement_text": "Avtomatik mexanizm",
       "case_diameter": "37 mm",
@@ -228,7 +228,7 @@
       "model": "Automatic 41mm Zircon",
       "name_uz": "West End Watch 41mm Zircon toshlari bilan",
       "name_ru": "West End Watch 41mm С циркониевыми камнями",
-      "price_usd": null,
+      "price_usd": 1600,
       "currency": "USD",
       "images": [
         "/images/watches/west-end-watch-41mm-zircon.webp"
@@ -267,13 +267,58 @@
       "updated_at": "2026-01-01T00:00:00.000Z"
     },
     {
+      "id": "west-end-watch-41mm-silver",
+      "slug": "west-end-watch-41mm-silver",
+      "brand": "West End Watch",
+      "model": "Automatic 41mm Silver Classic",
+      "name_uz": "West End Watch 41mm Silver (Klassik)",
+      "name_ru": "West End Watch 41mm Silver (Классика)",
+      "price_usd": 1350,
+      "currency": "USD",
+      "images": [
+        "/images/watches/west-end-watch-41mm-champagne.webp"
+      ],
+      "description_uz": "West End Watch 41 mm kumushrang (silver) siferblatli avtomatik mexanik soati. Do'kon ma'lumotiga ko'ra: original, safir shisha va sana ko'rsatkichi bilan.",
+      "description_ru": "Часы West End Watch 41 мм с серебристым циферблатом и автоподзаводом. По информации магазина: оригинал, сапфировое стекло и индикация даты.",
+      "movement_type": "automatic",
+      "movement_text": "Avtomatik mexanizm",
+      "case_diameter": "41 mm",
+      "case_diameter_val": 41,
+      "dial_color": "Silver / Kumushrang",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Avtomatik mexanizm",
+        "Kumushrang siferblat",
+        "Sana ko'rsatkichi"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: original",
+        "Rasmiy 2 yillik kafolat"
+      ],
+      "tags": [
+        "West End Watch",
+        "41mm",
+        "Silver",
+        "Avtomatik"
+      ],
+      "in_stock": true,
+      "is_bestseller": false,
+      "is_active": true,
+      "stock_quantity": 5,
+      "prep_days": 1,
+      "sort_order": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
       "id": "jacques-philippe-39mm",
       "slug": "jacques-philippe-39mm",
       "brand": "Jacques Philippe",
       "model": "Swiss Made Quartz 39mm",
       "name_uz": "Jacques Philippe 39mm",
       "name_ru": "Jacques Philippe 39mm",
-      "price_usd": null,
+      "price_usd": 480,
       "currency": "USD",
       "images": [
         "/images/watches/jacques-philippe-39mm.webp"
@@ -308,7 +353,7 @@
       "is_active": true,
       "stock_quantity": 6,
       "prep_days": 1,
-      "sort_order": 7,
+      "sort_order": 8,
       "created_at": "2026-01-01T00:00:00.000Z",
       "updated_at": "2026-01-01T00:00:00.000Z"
     },
@@ -319,7 +364,7 @@
       "model": "Swiss Made Quartz 41mm",
       "name_uz": "Jacques Philippe 41mm",
       "name_ru": "Jacques Philippe 41mm",
-      "price_usd": null,
+      "price_usd": 520,
       "currency": "USD",
       "images": [
         "/images/watches/jacques-philippe-41mm.webp"
@@ -350,11 +395,11 @@
         "50m"
       ],
       "in_stock": true,
-      "is_bestseller": false,
+      "is_bestseller": true,
       "is_active": true,
       "stock_quantity": 5,
       "prep_days": 1,
-      "sort_order": 8,
+      "sort_order": 9,
       "created_at": "2026-01-01T00:00:00.000Z",
       "updated_at": "2026-01-01T00:00:00.000Z"
     },
@@ -365,7 +410,7 @@
       "model": "Swiss Made Quartz 31mm",
       "name_uz": "Jacques Philippe 31mm",
       "name_ru": "Jacques Philippe 31mm",
-      "price_usd": null,
+      "price_usd": 450,
       "currency": "USD",
       "images": [
         "/images/watches/jacques-philippe-31mm.webp"
@@ -400,7 +445,7 @@
       "is_active": true,
       "stock_quantity": 4,
       "prep_days": 1,
-      "sort_order": 9,
+      "sort_order": 10,
       "created_at": "2026-01-01T00:00:00.000Z",
       "updated_at": "2026-01-01T00:00:00.000Z"
     }

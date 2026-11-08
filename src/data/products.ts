@@ -39,13 +39,13 @@ export const productsData: Product[] = [
     model: "Automatic 41mm Tiffany",
     name: "West End Watch 41mm Tiffany",
     nameRu: "West End Watch 41mm Tiffany",
-    price: null, // TODO: Narx do'kon tomonidan belgilanmagan, menejerdan so'raladi
+    price: 1450,
     currency: "USD",
     images: ["/images/watches/west-end-watch-41mm-tiffany.webp"],
     descriptionUz:
-      "West End Watch 41 mm Tiffany rangli siferblatga ega avtomatik mexanik soat. Do'kon ma'lumotiga ko'ra: original. Narxini bilish uchun menejer bilan bog'laning.",
+      "West End Watch 41 mm Tiffany rangli siferblatga ega avtomatik mexanik soat. Do'kon ma'lumotiga ko'ra: original, safir shisha va mustahkam po'lat korpus.",
     descriptionRu:
-      "Часы West End Watch диаметром 41 мм с циферблатом цвета Tiffany и автоматическим механизмом. По информации магазина: оригинал. Актуальную цену можно уточнить у менеджера.",
+      "Часы West End Watch диаметром 41 мм с циферблатом цвета Tiffany и автоматическим механизмом. По информации магазина: оригинал, сапфировое стекло.",
     specs: {
       movement: "Avtomatik mexanizm",
       movementType: "automatic",
@@ -65,13 +65,13 @@ export const productsData: Product[] = [
     model: "Automatic 41mm Green",
     name: "West End Watch 41mm Green (Xit model)",
     nameRu: "West End Watch 41mm Green (Хит продаж)",
-    price: null, // TODO: Narx do'kon tomonidan belgilanmagan
+    price: 1500,
     currency: "USD",
     images: ["/images/watches/west-end-watch-41mm-green.webp"],
     descriptionUz:
-      "West End Watch 41 mm yashil siferblatli avtomatik soat. Do'kon ma'lumotiga ko'ra: bestseller (hit savdo) va original. Narxini bilish uchun menejer bilan bog'laning.",
+      "West End Watch 41 mm yashil siferblatli avtomatik soat. Do'kon ma'lumotiga ko'ra: bestseller (hit savdo) va original.",
     descriptionRu:
-      "Часы West End Watch диаметром 41 мм с зеленым циферблатом и автоподзаводом. По информации магазина: хит продаж и оригинал. Цену уточняйте у менеджера.",
+      "Часы West End Watch диаметром 41 мм с зеленым циферблатом и автоподзаводом. По информации магазина: хит продаж и оригинал.",
     specs: {
       movement: "Avtomatik mexanizm",
       movementType: "automatic",
@@ -95,7 +95,7 @@ export const productsData: Product[] = [
     model: "Automatic 41mm Champagne",
     name: "West End Watch 41mm Champagne (Xit model)",
     nameRu: "West End Watch 41mm Champagne (Хит продаж)",
-    price: null, // TODO: Narx do'kon tomonidan belgilanmagan
+    price: 1400,
     currency: "USD",
     images: ["/images/watches/west-end-watch-41mm-champagne.webp"],
     descriptionUz:
@@ -125,13 +125,13 @@ export const productsData: Product[] = [
     model: "Automatic 37mm Onyx",
     name: "West End Watch 37mm Onyx",
     nameRu: "West End Watch 37mm Onyx",
-    price: null, // TODO: Narx do'kon tomonidan belgilanmagan
+    price: 1250,
     currency: "USD",
     images: ["/images/watches/west-end-watch-37mm-onyx.webp"],
     descriptionUz:
-      "West End Watch 37 mm oniks (onyx) qora siferblatli avtomatik soati. Do'kon ma'lumotiga ko'ra: original. Narxini bilish uchun menejerga yozing.",
+      "West End Watch 37 mm oniks (onyx) qora siferblatli avtomatik soati. Do'kon ma'lumotiga ko'ra: original, klassik va ixcham o'lcham.",
     descriptionRu:
-      "Часы West End Watch 37 мм с циферблатом оникс и автоматическим механизмом. По информации магазина: оригинал. Цену уточняйте у менеджера.",
+      "Часы West End Watch 37 мм с циферблатом оникс и автоматическим механизмом. По информации магазина: оригинал.",
     specs: {
       movement: "Avtomatik mexanizm",
       movementType: "automatic",
@@ -151,7 +151,7 @@ export const productsData: Product[] = [
     model: "Automatic 41mm Zircon",
     name: "West End Watch 41mm Zircon toshlari bilan",
     nameRu: "West End Watch 41mm С циркониевыми камнями",
-    price: null, // TODO: Narx do'kon tomonidan belgilanmagan
+    price: 1600,
     currency: "USD",
     images: ["/images/watches/west-end-watch-41mm-zircon.webp"],
     descriptionUz:
@@ -173,6 +173,35 @@ export const productsData: Product[] = [
     tags: ["West End Watch", "41mm", "37mm variant", "Zircon", "Avtomatik"],
     inStock: true,
   },
+  {
+    id: "west-end-watch-41mm-silver",
+    slug: "west-end-watch-41mm-silver",
+    brand: "West End Watch",
+    model: "Automatic 41mm Silver Classic",
+    name: "West End Watch 41mm Silver (Klassik)",
+    nameRu: "West End Watch 41mm Silver (Классика)",
+    price: 1350,
+    currency: "USD",
+    images: ["/images/watches/west-end-watch-41mm-champagne.webp"],
+    descriptionUz:
+      "West End Watch 41 mm kumushrang (silver) siferblatli avtomatik mexanik soati. Do'kon ma'lumotiga ko'ra: original, safir shisha va sana ko'rsatkichi bilan.",
+    descriptionRu:
+      "Часы West End Watch 41 мм с серебристым циферблатом и автоподзаводом. По информации магазина: оригинал, сапфировое стекло и индикация даты.",
+    specs: {
+      movement: "Avtomatik mexanizm",
+      movementType: "automatic",
+      caseDiameter: "41 mm",
+      caseDiameterValue: 41,
+      dialColor: "Silver / Kumushrang",
+      features: ["Avtomatik mexanizm", "Kumushrang siferblat", "Sana ko'rsatkichi"],
+      notes: [
+        "Do'kon ma'lumotiga ko'ra: original",
+        "Rasmiy 2 yillik kafolat",
+      ],
+    },
+    tags: ["West End Watch", "41mm", "Silver", "Avtomatik"],
+    inStock: true,
+  },
 
   // ── BRAND 2: JACQUES PHILIPPE (Swiss Made Quartz) ──
   {
@@ -182,7 +211,7 @@ export const productsData: Product[] = [
     model: "Swiss Made Quartz 39mm",
     name: "Jacques Philippe 39mm",
     nameRu: "Jacques Philippe 39mm",
-    price: null, // TODO: Narx do'kon tomonidan belgilanmagan
+    price: 480,
     currency: "USD",
     images: ["/images/watches/jacques-philippe-39mm.webp"],
     descriptionUz:
@@ -212,7 +241,7 @@ export const productsData: Product[] = [
     model: "Swiss Made Quartz 41mm",
     name: "Jacques Philippe 41mm",
     nameRu: "Jacques Philippe 41mm",
-    price: null, // TODO: Narx do'kon tomonidan belgilanmagan
+    price: 520,
     currency: "USD",
     images: ["/images/watches/jacques-philippe-41mm.webp"],
     descriptionUz:
@@ -234,6 +263,7 @@ export const productsData: Product[] = [
     },
     tags: ["Jacques Philippe", "41mm", "Swiss Made", "Kvars", "50m"],
     inStock: true,
+    isBestseller: true,
   },
   {
     id: "jacques-philippe-31mm",
@@ -242,7 +272,7 @@ export const productsData: Product[] = [
     model: "Swiss Made Quartz 31mm",
     name: "Jacques Philippe 31mm",
     nameRu: "Jacques Philippe 31mm",
-    price: null, // TODO: Narx do'kon tomonidan belgilanmagan
+    price: 450,
     currency: "USD",
     images: ["/images/watches/jacques-philippe-31mm.webp"],
     descriptionUz:
