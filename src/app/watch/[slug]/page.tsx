@@ -1,8 +1,7 @@
 import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { productsData } from "@/data/products";
-import { storeData } from "@/data/store";
+import { getProductBySlug, getStoreProducts, getStoreSettings } from "@/lib/db/queries";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WatchDetailClient from "./WatchDetailClient";
@@ -12,37 +11,41 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return productsData.map((p) => ({
+  const products = await getStoreProducts();
+  return products.map((p) => ({
     slug: p.slug,
   }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = productsData.find((p) => p.slug === slug);
+  const [product, storeInfo] = await Promise.all([
+    getProductBySlug(slug),
+    getStoreSettings(),
+  ]);
 
   if (!product) {
     return {
-      title: `Soat topilmadi | ${storeData.name}`,
+      title: `Soat topilmadi | ${storeInfo.displayName}`,
     };
   }
 
-  const priceText = `${product.price.toLocaleString("ru-RU")} so'm`;
+  const priceText = product.price ? `$${product.price} USD` : "Narxi so'rov bo'yicha";
 
   return {
-    title: `${product.name} | ${storeData.name}`,
-    description: `${product.description} Narxi: ${priceText}. O'zbekiston bo'ylab BTS pochtalariga bepul yetkazish va @soatsoz_uzb rasmiy kafolati bilan.`,
+    title: `${product.name} | ${storeInfo.displayName}`,
+    description: `${product.descriptionUz} Narxi: ${priceText}. Toshkent va Namangan filiallarida taqdim etilgan.`,
     openGraph: {
-      title: `${product.name} — ${storeData.name}`,
-      description: product.description,
-      siteName: storeData.name,
+      title: `${product.name} — ${storeInfo.displayName}`,
+      description: product.descriptionUz,
+      siteName: storeInfo.displayName,
       locale: "uz_UZ",
       type: "website",
       images: [
         {
           url: product.images[0],
-          width: 1200,
-          height: 1200,
+          width: 800,
+          height: 800,
           alt: product.name,
         },
       ],
@@ -69,29 +72,66 @@ function WatchDetailSkeleton() {
 
 async function WatchContent({ params }: PageProps) {
   const { slug } = await params;
-  const product = productsData.find((p) => p.slug === slug);
+  const [product, allProducts] = await Promise.all([
+    getProductBySlug(slug),
+    getStoreProducts(),
+  ]);
 
   if (!product) {
     notFound();
   }
 
-  const relatedProducts = productsData
-    .filter((p) => p.id !== product.id && (p.category === product.category || p.brand === product.brand))
+  const relatedProducts = allProducts
+    .filter((p) => p.id !== product.id && p.brand === product.brand)
     .slice(0, 3);
 
-  return <WatchDetailClient product={product} relatedProducts={relatedProducts} />;
-}
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: product.images,
+    description: product.descriptionUz,
+    sku: product.id,
+    brand: {
+      "@type": "Brand",
+      name: product.brand,
+    },
+    offers: {
+      "@type": "Offer",
+      url: `/watch/${product.slug}`,
+      priceCurrency: "USD",
+      price: product.price || undefined,
+      availability: product.inStock
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      seller: {
+        "@type": "Organization",
+        name: "SwissWatch Premium",
+      },
+    },
+  };
 
-export default function WatchPage({ params }: PageProps) {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <WatchDetailClient product={product} relatedProducts={relatedProducts} />
+    </>
+  );
+}
+
+export default async function WatchDetailPage({ params }: PageProps) {
+  return (
+    <div className="min-h-screen bg-[#090909] text-white flex flex-col justify-between selection:bg-[#D4AF37] selection:text-black">
       <Navbar />
-      <main className="min-h-screen bg-[#090909]">
+      <main className="flex-1 pt-20">
         <Suspense fallback={<WatchDetailSkeleton />}>
           <WatchContent params={params} />
         </Suspense>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

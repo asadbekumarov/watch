@@ -1,0 +1,609 @@
+{
+  "products": [
+    {
+      "id": "west-end-watch-32mm",
+      "slug": "west-end-watch-32mm",
+      "brand": "West End Watch",
+      "model": "Automatic 32mm Diamond",
+      "name_uz": "West End Watch 32mm (Olmos sertifikati bilan)",
+      "name_ru": "West End Watch 32mm (С сертификатом на бриллианты)",
+      "price_usd": 1300,
+      "currency": "USD",
+      "images": [
+        "/images/watches/west-end-watch-32mm.webp"
+      ],
+      "description_uz": "West End Watch brendining 32 mm o'lchamdagi avtomatik mexanik soati. Ayollar va erkaklar uchun mos. Do'kon ma'lumotiga ko'ra: original va olmos sertifikatiga ega.",
+      "description_ru": "Часы West End Watch диаметром 32 мм с автоматическим механизмом. Подходят как для женщин, так и для мужчин. По информации магазина: оригинал, с сертификатом на бриллианты.",
+      "movement_type": "automatic",
+      "movement_text": "Avtomatik mexanizm",
+      "case_diameter": "32 mm",
+      "case_diameter_val": 32,
+      "dial_color": "Klassik",
+      "water_resistance": "30 m",
+      "glass": "Sapfir",
+      "features": [
+        "Avtomatik mexanizm",
+        "Ayollar / Erkaklar modeli"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: original",
+        "Olmos sertifikati mavjud"
+      ],
+      "tags": [
+        "West End Watch",
+        "32mm",
+        "Avtomatik",
+        "Olmos sertifikati"
+      ],
+      "in_stock": true,
+      "is_bestseller": false,
+      "is_active": true,
+      "stock_quantity": 5,
+      "prep_days": 1,
+      "sort_order": 1,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "west-end-watch-41mm-tiffany",
+      "slug": "west-end-watch-41mm-tiffany",
+      "brand": "West End Watch",
+      "model": "Automatic 41mm Tiffany",
+      "name_uz": "West End Watch 41mm Tiffany",
+      "name_ru": "West End Watch 41mm Tiffany",
+      "price_usd": null,
+      "currency": "USD",
+      "images": [
+        "/images/watches/west-end-watch-41mm-tiffany.webp"
+      ],
+      "description_uz": "West End Watch 41 mm Tiffany rangli siferblatga ega avtomatik mexanik soat. Do'kon ma'lumotiga ko'ra: original. Narxini bilish uchun menejer bilan bog'laning.",
+      "description_ru": "Часы West End Watch диаметром 41 мм с циферблатом цвета Tiffany и автоматическим механизмом. По информации магазина: оригинал. Актуальную цену можно уточнить у менеджера.",
+      "movement_type": "automatic",
+      "movement_text": "Avtomatik mexanizm",
+      "case_diameter": "41 mm",
+      "case_diameter_val": 41,
+      "dial_color": "Tiffany",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Avtomatik mexanizm",
+        "Tiffany rang"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: original"
+      ],
+      "tags": [
+        "West End Watch",
+        "41mm",
+        "Tiffany",
+        "Avtomatik"
+      ],
+      "in_stock": true,
+      "is_bestseller": false,
+      "is_active": true,
+      "stock_quantity": 3,
+      "prep_days": 1,
+      "sort_order": 2,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "west-end-watch-41mm-green",
+      "slug": "west-end-watch-41mm-green",
+      "brand": "West End Watch",
+      "model": "Automatic 41mm Green",
+      "name_uz": "West End Watch 41mm Green (Xit model)",
+      "name_ru": "West End Watch 41mm Green (Хит продаж)",
+      "price_usd": null,
+      "currency": "USD",
+      "images": [
+        "/images/watches/west-end-watch-41mm-green.webp"
+      ],
+      "description_uz": "West End Watch 41 mm yashil siferblatli avtomatik soat. Do'kon ma'lumotiga ko'ra: bestseller (hit savdo) va original. Narxini bilish uchun menejer bilan bog'laning.",
+      "description_ru": "Часы West End Watch диаметром 41 мм с зеленым циферблатом и автоподзаводом. По информации магазина: хит продаж и оригинал. Цену уточняйте у менеджера.",
+      "movement_type": "automatic",
+      "movement_text": "Avtomatik mexanizm",
+      "case_diameter": "41 mm",
+      "case_diameter_val": 41,
+      "dial_color": "Yashil / Green",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Avtomatik mexanizm",
+        "Yashil siferblat"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: bestseller",
+        "Do'kon ma'lumotiga ko'ra: original"
+      ],
+      "tags": [
+        "West End Watch",
+        "41mm",
+        "Yashil",
+        "Bestseller",
+        "Avtomatik"
+      ],
+      "in_stock": true,
+      "is_bestseller": true,
+      "is_active": true,
+      "stock_quantity": 4,
+      "prep_days": 1,
+      "sort_order": 3,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "west-end-watch-41mm-champagne",
+      "slug": "west-end-watch-41mm-champagne",
+      "brand": "West End Watch",
+      "model": "Automatic 41mm Champagne",
+      "name_uz": "West End Watch 41mm Champagne (Xit model)",
+      "name_ru": "West End Watch 41mm Champagne (Хит продаж)",
+      "price_usd": null,
+      "currency": "USD",
+      "images": [
+        "/images/watches/west-end-watch-41mm-champagne.webp"
+      ],
+      "description_uz": "West End Watch 41 mm shampan (champagne) rangli siferblatli avtomatik model. Do'kon ma'lumotiga ko'ra: bestseller va original.",
+      "description_ru": "Часы West End Watch 41 мм цвета шампань с автоматическим механизмом. По информации магазина: хит продаж и оригинал.",
+      "movement_type": "automatic",
+      "movement_text": "Avtomatik mexanizm",
+      "case_diameter": "41 mm",
+      "case_diameter_val": 41,
+      "dial_color": "Champagne / Shampan",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Avtomatik mexanizm",
+        "Champagne siferblat"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: bestseller",
+        "Do'kon ma'lumotiga ko'ra: original"
+      ],
+      "tags": [
+        "West End Watch",
+        "41mm",
+        "Champagne",
+        "Bestseller",
+        "Avtomatik"
+      ],
+      "in_stock": true,
+      "is_bestseller": true,
+      "is_active": true,
+      "stock_quantity": 4,
+      "prep_days": 1,
+      "sort_order": 4,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "west-end-watch-37mm-onyx",
+      "slug": "west-end-watch-37mm-onyx",
+      "brand": "West End Watch",
+      "model": "Automatic 37mm Onyx",
+      "name_uz": "West End Watch 37mm Onyx",
+      "name_ru": "West End Watch 37mm Onyx",
+      "price_usd": null,
+      "currency": "USD",
+      "images": [
+        "/images/watches/west-end-watch-37mm-onyx.webp"
+      ],
+      "description_uz": "West End Watch 37 mm oniks (onyx) qora siferblatli avtomatik soati. Do'kon ma'lumotiga ko'ra: original. Narxini bilish uchun menejerga yozing.",
+      "description_ru": "Часы West End Watch 37 мм с циферблатом оникс и автоматическим механизмом. По информации магазина: оригинал. Цену уточняйте у менеджера.",
+      "movement_type": "automatic",
+      "movement_text": "Avtomatik mexanizm",
+      "case_diameter": "37 mm",
+      "case_diameter_val": 37,
+      "dial_color": "Onyx / Oniks qora",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Avtomatik mexanizm",
+        "Onyx siferblat",
+        "Ixcham 37 mm"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: original"
+      ],
+      "tags": [
+        "West End Watch",
+        "37mm",
+        "Onyx",
+        "Avtomatik"
+      ],
+      "in_stock": true,
+      "is_bestseller": false,
+      "is_active": true,
+      "stock_quantity": 2,
+      "prep_days": 1,
+      "sort_order": 5,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "west-end-watch-41mm-zircon",
+      "slug": "west-end-watch-41mm-zircon",
+      "brand": "West End Watch",
+      "model": "Automatic 41mm Zircon",
+      "name_uz": "West End Watch 41mm Zircon toshlari bilan",
+      "name_ru": "West End Watch 41mm С циркониевыми камнями",
+      "price_usd": null,
+      "currency": "USD",
+      "images": [
+        "/images/watches/west-end-watch-41mm-zircon.webp"
+      ],
+      "description_uz": "West End Watch 41 mm sirkon (zircon) toshlari bilan bezatilgan avtomatik mexanik soat. Do'kon ma'lumotiga ko'ra: original.",
+      "description_ru": "Часы West End Watch 41 мм с циркониевыми камнями и автоматическим механизмом. По информации магазина: оригинал.",
+      "movement_type": "automatic",
+      "movement_text": "Avtomatik mexanizm",
+      "case_diameter": "41 mm",
+      "case_diameter_val": 41,
+      "dial_color": "Zircon toshlar",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Avtomatik mexanizm",
+        "Zircon toshlar",
+        "37 mm varianti ham mavjud"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: original"
+      ],
+      "tags": [
+        "West End Watch",
+        "41mm",
+        "37mm variant",
+        "Zircon",
+        "Avtomatik"
+      ],
+      "in_stock": true,
+      "is_bestseller": false,
+      "is_active": true,
+      "stock_quantity": 3,
+      "prep_days": 1,
+      "sort_order": 6,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "jacques-philippe-39mm",
+      "slug": "jacques-philippe-39mm",
+      "brand": "Jacques Philippe",
+      "model": "Swiss Made Quartz 39mm",
+      "name_uz": "Jacques Philippe 39mm",
+      "name_ru": "Jacques Philippe 39mm",
+      "price_usd": null,
+      "currency": "USD",
+      "images": [
+        "/images/watches/jacques-philippe-39mm.webp"
+      ],
+      "description_uz": "Jacques Philippe 39 mm kvars (batareya) soati. Do'kon ma'lumotiga ko'ra: Swiss Made, 50 metr suvga chidamli, 2 yillik rasmiy kafolat bilan.",
+      "description_ru": "Часы Jacques Philippe 39 мм с кварцевым механизмом. По информации магазина: Swiss Made, водонепроницаемость 50 м, официальная гарантия 2 года.",
+      "movement_type": "quartz",
+      "movement_text": "Kvars (batareya)",
+      "case_diameter": "39 mm",
+      "case_diameter_val": 39,
+      "dial_color": "Klassik kumush",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Swiss Made (do'kon ma'lumoti)",
+        "Kvars mexanizm",
+        "50m suvga chidamli"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: Swiss Made",
+        "2 yillik rasmiy kafolat"
+      ],
+      "tags": [
+        "Jacques Philippe",
+        "39mm",
+        "Swiss Made",
+        "Kvars",
+        "50m"
+      ],
+      "in_stock": true,
+      "is_bestseller": false,
+      "is_active": true,
+      "stock_quantity": 6,
+      "prep_days": 1,
+      "sort_order": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "jacques-philippe-41mm",
+      "slug": "jacques-philippe-41mm",
+      "brand": "Jacques Philippe",
+      "model": "Swiss Made Quartz 41mm",
+      "name_uz": "Jacques Philippe 41mm",
+      "name_ru": "Jacques Philippe 41mm",
+      "price_usd": null,
+      "currency": "USD",
+      "images": [
+        "/images/watches/jacques-philippe-41mm.webp"
+      ],
+      "description_uz": "Jacques Philippe 41 mm klassik kvars soati. Do'kon ma'lumotiga ko'ra: Swiss Made, 50 metr suvga chidamli va 2 yillik rasmiy kafolat.",
+      "description_ru": "Часы Jacques Philippe 41 мм с кварцевым механизмом. По информации магазина: Swiss Made, водонепроницаемость 50 м и официальная гарантия 2 года.",
+      "movement_type": "quartz",
+      "movement_text": "Kvars (batareya)",
+      "case_diameter": "41 mm",
+      "case_diameter_val": 41,
+      "dial_color": "Klassik qora",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Swiss Made (do'kon ma'lumoti)",
+        "Kvars mexanizm",
+        "50m suvga chidamli"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: Swiss Made",
+        "2 yillik rasmiy kafolat"
+      ],
+      "tags": [
+        "Jacques Philippe",
+        "41mm",
+        "Swiss Made",
+        "Kvars",
+        "50m"
+      ],
+      "in_stock": true,
+      "is_bestseller": false,
+      "is_active": true,
+      "stock_quantity": 5,
+      "prep_days": 1,
+      "sort_order": 8,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "jacques-philippe-31mm",
+      "slug": "jacques-philippe-31mm",
+      "brand": "Jacques Philippe",
+      "model": "Swiss Made Quartz 31mm",
+      "name_uz": "Jacques Philippe 31mm",
+      "name_ru": "Jacques Philippe 31mm",
+      "price_usd": null,
+      "currency": "USD",
+      "images": [
+        "/images/watches/jacques-philippe-31mm.webp"
+      ],
+      "description_uz": "Jacques Philippe 31 mm ixcham kvars modeli. Do'kon ma'lumotiga ko'ra: Swiss Made, 50 metr suvga chidamli va 2 yillik rasmiy kafolat.",
+      "description_ru": "Часы Jacques Philippe 31 мм, компактная кварцевая модель. По информации магазина: Swiss Made, водонепроницаемость 50 м и официальная гарантия 2 года.",
+      "movement_type": "quartz",
+      "movement_text": "Kvars (batareya)",
+      "case_diameter": "31 mm",
+      "case_diameter_val": 31,
+      "dial_color": "Marvarid / Pearl",
+      "water_resistance": "50 m",
+      "glass": "Sapfir",
+      "features": [
+        "Swiss Made (do'kon ma'lumoti)",
+        "Kvars mexanizm",
+        "50m suvga chidamli"
+      ],
+      "notes": [
+        "Do'kon ma'lumotiga ko'ra: Swiss Made",
+        "2 yillik rasmiy kafolat"
+      ],
+      "tags": [
+        "Jacques Philippe",
+        "31mm",
+        "Swiss Made",
+        "Kvars",
+        "50m"
+      ],
+      "in_stock": true,
+      "is_bestseller": false,
+      "is_active": true,
+      "stock_quantity": 4,
+      "prep_days": 1,
+      "sort_order": 9,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "site_settings": {
+    "id": "default",
+    "store_name": "SwissWatch_premium",
+    "display_name": "SwissWatch Premium",
+    "tagline_uz": "Toshkent va Namangandagi West End Watch hamda Jacques Philippe soatlari kolleksiyasi",
+    "tagline_ru": "Коллекция часов West End Watch и Jacques Philippe в Ташкенте и Намангане",
+    "about_uz": "SwissWatch Premium — Toshkent va Namangan shaharlaridagi do'konlarda West End Watch hamda Jacques Philippe soatlarini taklif etadi. Do'konga tashrif buyurib modellarni ko'rishingiz yoki Telegram orqali narxlarni aniqlab buyurtma berishingiz mumkin.",
+    "about_ru": "SwissWatch Premium представляет коллекции часов West End Watch и Jacques Philippe в Ташкенте и Намангане. Вы можете ознакомиться с моделями в наших филиалах или уточнить актуальные цены и детали через Telegram.",
+    "phone": "+998 88 500 70 00",
+    "phone_clean": "+998885007000",
+    "telegram_channel": "https://t.me/swisswatch_premium",
+    "telegram_manager": "@swissWatch_admin",
+    "telegram_manager_url": "https://t.me/swissWatch_admin",
+    "instagram_handle": null,
+    "working_hours_uz": "Ish vaqtini menejerdan so'rang",
+    "working_hours_ru": "Уточняйте график у менеджера",
+    "usd_to_uzs_rate": null,
+    "default_prep_days": 1,
+    "delivery_info_uz": "Yetkazib berish shartlari menejer bilan kelishiladi",
+    "delivery_info_ru": "Условия доставки согласовываются с менеджером",
+    "updated_at": "2026-01-01T00:00:00.000Z"
+  },
+  "hero_banners": [
+    {
+      "id": 1,
+      "title_line1_uz": "WEST END WATCH",
+      "title_line2_uz": "JACQUES PHILIPPE",
+      "title_line1_ru": "WEST END WATCH",
+      "title_line2_ru": "JACQUES PHILIPPE",
+      "subtitle_uz": "Toshkent va Namangandagi soatlar kolleksiyasi",
+      "subtitle_ru": "Коллекция часов в Ташкенте и Намангане",
+      "is_active": true,
+      "sort_order": 0
+    }
+  ],
+  "branches": [
+    {
+      "id": "branch-tashkent",
+      "city_uz": "Toshkent shahri",
+      "city_ru": "г. Ташкент",
+      "address_uz": "Toshkent shahri, Langar ko'chasi, 12-uy",
+      "address_ru": "г. Ташкент, ул. Лангар, дом 12",
+      "landmark_uz": "Hotel Marwa mehmonxonasi",
+      "landmark_ru": "Ориентир: гостиница Hotel Marwa",
+      "note_uz": "Hotel Marwa yaqinida",
+      "note_ru": "Около Hotel Marwa",
+      "phone": "+998 88 500 70 00",
+      "working_hours_uz": "Ish vaqtini menejerdan so'rang",
+      "working_hours_ru": "Уточняйте график у менеджера",
+      "map_link": null,
+      "pickup_enabled": true,
+      "sort_order": 1,
+      "is_active": true
+    },
+    {
+      "id": "branch-namangan",
+      "city_uz": "Namangan shahri",
+      "city_ru": "г. Наманган",
+      "address_uz": "Namangan shahri, A. Navoiy ko'chasi, 42-uy",
+      "address_ru": "г. Наманган, ул. А. Навои, дом 42",
+      "landmark_uz": "Shodlik savdo markazi",
+      "landmark_ru": "Ориентир: ТЦ Шодлик",
+      "note_uz": "Shodlik savdo markazi mo'ljalida",
+      "note_ru": "Ориентир ТЦ Шодлик",
+      "phone": "+998 88 500 70 00",
+      "working_hours_uz": "Ish vaqtini menejerdan so'rang",
+      "working_hours_ru": "Уточняйте график у менеджера",
+      "map_link": null,
+      "pickup_enabled": true,
+      "sort_order": 2,
+      "is_active": true
+    }
+  ],
+  "faqs": [
+    {
+      "id": 1,
+      "question_uz": "Katalogda qaysi brendlar taqdim etilgan?",
+      "question_ru": "Какие бренды представлены в каталоге?",
+      "answer_uz": "Kolleksiyamizda West End Watch (avtomatik mexanizm) hamda Jacques Philippe (kvars mexanizmi, 50 m suvga chidamli) modellarining turli o'lchamdagi variantlari mavjud.",
+      "answer_ru": "В каталоге представлены модели West End Watch (с автоматическим механизмом) и Jacques Philippe (кварцевый механизм, водонепроницаемость 50 м).",
+      "sort_order": 1,
+      "is_active": true
+    }
+  ],
+  "delivery_methods": [
+    {
+      "id": "delivery-pickup",
+      "name_uz": "Do'kondan olib ketish (Samovivoz)",
+      "name_ru": "Самовывоз из магазина",
+      "delivery_type": "pickup",
+      "branch_id": "branch-central",
+      "price_usd": 0,
+      "free_above_usd": null,
+      "is_enabled": true,
+      "sort_order": 1
+    },
+    {
+      "id": "delivery-courier",
+      "name_uz": "Toshkent shahri bo'ylab yetkazib berish",
+      "name_ru": "Доставка по городу Ташкент",
+      "delivery_type": "delivery",
+      "branch_id": null,
+      "price_usd": 5,
+      "free_above_usd": 1000,
+      "is_enabled": true,
+      "sort_order": 2
+    }
+  ],
+  "promo_codes": [
+    {
+      "id": 1,
+      "code": "WELCOME10",
+      "type": "percent",
+      "value": 10,
+      "min_order_usd": 100,
+      "max_discount_usd": 200,
+      "valid_from": null,
+      "valid_to": null,
+      "total_usage_limit": 100,
+      "per_customer_limit": 1,
+      "usage_count": 3,
+      "is_active": true,
+      "created_at": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-demo-001",
+      "order_number": "SWP-2026-9219",
+      "customer_name": "Azizbek Rahimov",
+      "customer_phone": "+998 90 123 45 67",
+      "customer_email": null,
+      "lang": "uz",
+      "status": "new",
+      "delivery_type": "pickup",
+      "branch_id": "branch-central",
+      "delivery_method_id": "delivery-pickup",
+      "delivery_address": null,
+      "comment": "Kechga yaqin olib ketaman.",
+      "internal_notes": "Mijoz bilan bog'lanildi, soat tayyorlanmoqda.",
+      "promo_code_id": null,
+      "promo_code": null,
+      "discount_usd": 0,
+      "subtotal_usd": 1300,
+      "delivery_fee_usd": 0,
+      "total_usd": 1300,
+      "usd_to_uzs_rate": null,
+      "total_uzs": null,
+      "payment_method": "cash_on_delivery",
+      "payment_status": "unpaid",
+      "estimated_ready_date": "2026-11-09T18:00:00.000Z",
+      "created_at": "2026-11-08T06:35:21.615Z",
+      "updated_at": "2026-11-08T06:35:21.615Z"
+    }
+  ],
+  "order_items": [
+    {
+      "id": 1,
+      "order_id": "ord-demo-001",
+      "product_id": "west-end-watch-32mm",
+      "product_slug": "west-end-watch-32mm",
+      "product_name_uz": "West End Watch 32mm (Olmos sertifikati bilan)",
+      "product_name_ru": "West End Watch 32mm (С сертификатом на бриллианты)",
+      "brand": "West End Watch",
+      "image_url": "/images/watches/west-end-watch-32mm.webp",
+      "unit_price_usd": 1300,
+      "quantity": 1,
+      "total_price_usd": 1300
+    }
+  ],
+  "sms_log": [
+    {
+      "id": "sms-demo-1",
+      "order_id": "ord-demo-001",
+      "phone": "+998901234567",
+      "message": "SwissWatch: Buyurtmangiz qabul qilindi #SWP-2026-9219. Summa: $1300 USD.",
+      "provider": "mock",
+      "status": "sent",
+      "attempt_count": 1,
+      "external_id": "mock-sms-001",
+      "error_details": null,
+      "created_at": "2026-11-08T06:35:21.615Z"
+    }
+  ],
+  "audit_log": [
+    {
+      "id": "audit-demo-1",
+      "actor_id": "dev-owner-id",
+      "actor_email": "watch@gmail.com",
+      "actor_role": "owner",
+      "action": "INIT_DEV_STORE",
+      "entity_type": "system",
+      "entity_id": "default",
+      "old_values": null,
+      "new_values": {
+        "initialized": true
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-11-08T06:50:21.615Z"
+    }
+  ]
+}

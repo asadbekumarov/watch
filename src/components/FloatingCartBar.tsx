@@ -8,10 +8,10 @@ import { formatPrice } from "@/lib/formatPrice";
 import { ShoppingBag, ArrowRight } from "lucide-react";
 
 export default function FloatingCartBar() {
-  const { totalCount, totalAmount } = useCart();
+  const { totalCount, totalAmount, isLoaded } = useCart();
   const { lang, t } = useTranslation();
 
-  if (totalCount === 0) return null;
+  if (!isLoaded || totalCount === 0) return null;
 
   return (
     <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] inset-x-3.5 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-auto z-40 animate-in slide-in-from-bottom-5 duration-300">

@@ -19,25 +19,37 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alfajr.uz"),
-  title: "ALFAJR — Soatlar Olami | Islomiy Azon Soatlari & Tsar Bomba Toshkent",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
+  // Demo site: Block all search engines from indexing
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "none",
+      "max-snippet": -1,
+    },
+  },
+  title: "SwissWatch Premium | Ko'rgazma Zali (Toshkent, Namangan)",
   description:
-    "O'zbekistondagi 100% asl Al-Fajr azon va qibla soatlari, Tsar Bomba tonneau va Philipp Plein modellari. O'zbekiston bo'ylab BTS Pochta orqali BEPUL yetkazib berish va @soatsoz_uzb rasmiy servis kafolati.",
+    "SwissWatch Premium — Toshkent va Namangan shaharlaridagi do'konlarda West End Watch hamda Jacques Philippe soatlari kolleksiyasi.",
   keywords: [
-    "Al-Fajr soatlari",
-    "azon soati",
-    "Al Fajr Toshkent",
-    "qibla kompas soat",
-    "Tsar Bomba Tashkent",
-    "Philipp Plein soat",
-    "soatlar olami",
-    "soat dostavka",
-    "BTS pochta bepul dastavka",
-    "alfajr_uz",
+    "SwissWatch Premium",
+    "SwissWatch_premium",
+    "West End Watch",
+    "Jacques Philippe",
+    "soatlar Toshkent",
+    "soatlar Namangan",
+    "soat do'koni",
   ],
   openGraph: {
-    title: "ALFAJR — Soatlar Olami | Rasmiy Do'kon",
-    description: "Al-Fajr Islomiy azon soatlari, Tsar Bomba va xalqaro brendlar. BTS Express orqali bepul yetkazish.",
+    title: "SwissWatch Premium — Ko'rgazma Zali (Toshkent, Namangan)",
+    description:
+      "West End Watch va Jacques Philippe soatlari kolleksiyasi. Toshkent va Namangandagi ko'rgazma zallari.",
     locale: "uz_UZ",
     type: "website",
   },

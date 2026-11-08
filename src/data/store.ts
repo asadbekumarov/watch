@@ -1,71 +1,47 @@
-export interface StoreAddress {
-  address: string;
-  type: string;
-  district: string;
-  landmark: string;
-}
+import type { StoreBranch, StoreInfo } from "@/types/store";
 
-export interface StoreDeliveryInfo {
-  btsDelivery: string;
-  tashkentDelivery: string;
-  freeDeliveryThreshold: number;
-  standardFee: number;
-  coverageArea: string;
-}
-
-export interface StoreInfo {
-  name: string;
-  tagline: string;
-  since: number;
-  addresses: StoreAddress[];
-  phone: string;
-  phoneSecondary: string;
-  telegram: string;
-  instagram: string;
-  serviceCenter: string;
-  followersCount: string;
-  workingHours: string;
-  mapsLink: string;
-  delivery: StoreDeliveryInfo;
-  serviceStory: {
-    origin: string;
-    guarantee: string;
-    services: string;
-  };
-}
+export type { StoreBranch, StoreInfo };
 
 export const storeData: StoreInfo = {
-  name: "ALFAJR — Soatlar Olami",
-  tagline: "Islomiy Al-Fajr soatlari, Tsar Bomba va brend xronometrlarning O'zbekistondagi ishonchli do'koni",
-  since: 2017,
-  addresses: [
+  name: "SwissWatch_premium",
+  displayName: "SwissWatch Premium",
+  taglineUz: "Toshkent va Namangandagi West End Watch hamda Jacques Philippe soatlari kolleksiyasi",
+  taglineRu: "Коллекция часов West End Watch и Jacques Philippe в Ташкенте и Намангане",
+  aboutUz:
+    "SwissWatch Premium — Toshkent va Namangan shaharlaridagi do'konlarda West End Watch hamda Jacques Philippe soatlarini taklif etadi. Do'konga tashrif buyurib modellarni ko'rishingiz yoki Telegram orqali narxlarni aniqlab buyurtma berishingiz mumkin.",
+  aboutRu:
+    "SwissWatch Premium представляет коллекции часов West End Watch и Jacques Philippe в Ташкенте и Намангане. Вы можете ознакомиться с моделями в наших филиалах или уточнить актуальные цены и детали через Telegram.",
+  phone: "+998 88 500 70 00",
+  phoneClean: "+998885007000",
+  telegramChannel: "https://t.me/swisswatch_premium",
+  telegramManager: "@swissWatch_admin",
+  telegramManagerUrl: "https://t.me/swissWatch_admin",
+  instagramHandle: null, // TODO: Instagram handle not verified yet by store
+  workingHoursUz: "Ish vaqtini menejerdan so'rang", // TODO: store never gave hours, replace with real showroom hours once confirmed
+  workingHoursRu: "Уточняйте график у менеджера", // TODO: store never gave hours, replace with real showroom hours once confirmed
+  branches: [
     {
-      address: "Toshkent sh., Kichik Xalqa Yo'li, 19",
-      type: "Bosh do'kon & Ko'rgazma zali",
-      district: "Yakkasaroy / Kichik Xalqa",
-      landmark: "Kichik Xalqa yo'li yoqasida, 09:00 dan 21:00 gacha",
+      id: "tashkent",
+      city: "Toshkent shahri",
+      cityRu: "г. Ташкент",
+      address: "Toshkent shahri, Langar ko'chasi, 12-uy", // TODO: confirm house number, 12 or 8
+      addressRu: "г. Ташкент, ул. Лангар, дом 12",
+      landmark: "Hotel Marwa mehmonxonasi",
+      landmarkRu: "Ориентир: гостиница Hotel Marwa",
+      note: "Hotel Marwa yaqinida",
+    },
+    {
+      id: "namangan",
+      city: "Namangan shahri",
+      cityRu: "г. Наманган",
+      address: "Namangan shahri, A. Navoiy ko'chasi, 42-uy",
+      addressRu: "г. Наманган, ул. А. Навои, дом 42",
+      landmark: "Shodlik savdo markazi",
+      landmarkRu: "Ориентир: ТЦ Шодлик",
     },
   ],
-  phone: "+998 71 200 83 00",
-  phoneSecondary: "+998 99 831 00 99",
-  telegram: "@alfajr_uz",
-  instagram: "@alfajr_uz",
-  serviceCenter: "@soatsoz_uzb",
-  followersCount: "235K+",
-  workingHours: "Har kuni 09:00 - 21:00 (dam olish kunlarisiz)",
-  mapsLink: "https://maps.google.com/?q=Toshkent+Kichik+Xalqa+Yoli+19",
-  delivery: {
-    btsDelivery: "O'zbekiston bo'ylab BTS Pochta filiallariga mutlaqo BEPUL yetkazib berish",
-    tashkentDelivery: "Toshkent shahri bo'ylab tezkor kuryer xizmati (2-3 soatda eshikkacha)",
-    freeDeliveryThreshold: 0,
-    standardFee: 0,
-    coverageArea: "O'zbekistonning barcha 14 ta hududi (BTS Express pochtalari) va Toshkent shahri",
-  },
-  serviceStory: {
-    origin: "ALFAJR — O'zbekistonda 235 mingdan ortiq soat ixlosmandlarini birlashtirgan, ishonchli va asl soatlar maskani.",
-    guarantee: "Barcha soatlarga 1 yillik rasmiy kafolat va xalqaro sifat pasporti taqdim etiladi.",
-    services: "@soatsoz_uzb ixtisoslashtirilgan rasmiy servis markazi orqali bepul sozlash, batareya almashtirish, o'lchov olish va texnik xizmat ko'rsatiladi.",
-  },
+  deliveryInfoUz: "Yetkazib berish shartlari menejer bilan kelishiladi", // TODO: confirm delivery options
+  deliveryInfoRu: "Условия доставки согласовываются с менеджером",
 };
 
 export default storeData;

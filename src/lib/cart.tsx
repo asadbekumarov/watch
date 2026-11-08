@@ -1,137 +1,174 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState, useMemo } from "react";
-import { Product, SelectedCustomization, productsData } from "@/data/products";
+import React, { createContext, useContext, useSyncExternalStore, useCallback, useMemo } from "react";
+import { Product } from "@/data/products";
 
 export interface CartItem {
-  id: string; // unique item key
+  id: string; // product.id
   product: Product;
   quantity: number;
-  customization?: SelectedCustomization;
-  unitPrice: number;
+  unitPrice: number | null;
 }
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (
-    product: Product,
-    quantity?: number,
-    customization?: SelectedCustomization,
-    unitPrice?: number
-  ) => boolean;
+  addItem: (product: Product, quantity?: number) => boolean;
   removeItem: (itemId: string) => void;
   updateQuantity: (itemId: string, newQty: number) => void;
   clearCart: () => void;
   totalCount: number;
   totalAmount: number;
-  recommendedUpsells: Product[];
+  isLoaded: boolean;
 }
 
 const CartContext = createContext<CartContextType | null>(null);
 
-const STORAGE_KEY = "alfajr_soatlar_cart_v1";
+const STORAGE_KEY = "swisswatch_premium_cart_v1";
 
-function generateCartItemId(productId: string, customization?: SelectedCustomization): string {
-  if (!customization) return productId;
-  const parts = [
-    productId,
-    customization.strapId || "def",
-    customization.giftBox ? "gift" : "std",
-    customization.engravingText ? encodeURIComponent(customization.engravingText) : "no-engr",
-  ];
-  return parts.join("::");
+let hasHydrated = false;
+let memoryItems: CartItem[] = [];
+const cartListeners = new Set<() => void>();
+
+function notifyCartListeners() {
+  cartListeners.forEach((listener) => listener());
+}
+
+function isValidCartItem(item: unknown): item is CartItem {
+  if (!item || typeof item !== "object") return false;
+  const candidate = item as Partial<CartItem>;
+  return (
+    typeof candidate.id === "string" &&
+    candidate.product !== null &&
+    typeof candidate.product === "object" &&
+    typeof candidate.quantity === "number" &&
+    candidate.quantity > 0
+  );
+}
+
+function parseCartSafely(raw: string | null): CartItem[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      return parsed.filter(isValidCartItem);
+    }
+    return [];
+  } catch {
+    return [];
+  }
+}
+
+function loadStoredItems(): CartItem[] {
+  if (typeof window === "undefined") return [];
+  if (!hasHydrated) {
+    hasHydrated = true;
+    memoryItems = parseCartSafely(localStorage.getItem(STORAGE_KEY));
+  }
+  return memoryItems;
+}
+
+function subscribe(callback: () => void) {
+  cartListeners.add(callback);
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY) {
+      memoryItems = parseCartSafely(e.newValue);
+      callback();
+    }
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    cartListeners.delete(callback);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function getSnapshot(): CartItem[] {
+  return loadStoredItems();
+}
+
+const SERVER_SNAPSHOT: CartItem[] = [];
+function getServerSnapshot(): CartItem[] {
+  return SERVER_SNAPSHOT;
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  // Initialize lazily to avoid setState synchronously inside useEffect
-  const [items, setItems] = useState<CartItem[]>(() => {
-    if (typeof window === "undefined") return [];
+  const items = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+
+  const saveItems = (newItems: CartItem[]) => {
+    memoryItems = newItems;
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) return parsed;
-      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newItems));
     } catch {
       // ignore
     }
-    return [];
-  });
+    notifyCartListeners();
+  };
 
-  // Save to local storage on changes
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    } catch (e) {
-      console.warn("Failed to write cart to local storage:", e);
+  const addItem = useCallback((product: Product, quantity: number = 1): boolean => {
+    if (quantity <= 0) return false;
+    const current = loadStoredItems();
+    const existing = current.find((i) => i.id === product.id);
+    let updated: CartItem[];
+    if (existing) {
+      updated = current.map((i) =>
+        i.id === product.id ? { ...i, quantity: i.quantity + quantity } : i
+      );
+    } else {
+      updated = [
+        ...current,
+        {
+          id: product.id,
+          product,
+          quantity,
+          unitPrice: product.price,
+        },
+      ];
     }
-  }, [items]);
-
-  const addItem = (
-    product: Product,
-    quantity = 1,
-    customization?: SelectedCustomization,
-    customUnitPrice?: number
-  ): boolean => {
-    const unitPrice = customUnitPrice !== undefined ? customUnitPrice : product.price;
-    const cartItemId = generateCartItemId(product.id, customization);
-
-    setItems((prev) => {
-      const existingIdx = prev.findIndex((i) => i.id === cartItemId);
-      if (existingIdx > -1) {
-        const copy = [...prev];
-        copy[existingIdx].quantity += quantity;
-        return copy;
-      } else {
-        return [
-          ...prev,
-          {
-            id: cartItemId,
-            product,
-            quantity,
-            customization,
-            unitPrice,
-          },
-        ];
-      }
-    });
-
+    saveItems(updated);
     return true;
-  };
+  }, []);
 
-  const removeItem = (itemId: string) => {
-    setItems((prev) => prev.filter((i) => i.id !== itemId));
-  };
+  const removeItem = useCallback((itemId: string) => {
+    const current = loadStoredItems();
+    const updated = current.filter((i) => i.id !== itemId);
+    saveItems(updated);
+  }, []);
 
-  const updateQuantity = (itemId: string, newQty: number) => {
+  const updateQuantity = useCallback((itemId: string, newQty: number) => {
     if (newQty <= 0) {
       removeItem(itemId);
       return;
     }
-    setItems((prev) =>
-      prev.map((i) => (i.id === itemId ? { ...i, quantity: newQty } : i))
+    const current = loadStoredItems();
+    const updated = current.map((i) =>
+      i.id === itemId ? { ...i, quantity: newQty } : i
     );
-  };
+    saveItems(updated);
+  }, [removeItem]);
 
-  const clearCart = () => {
-    setItems([]);
-  };
+  const clearCart = useCallback(() => {
+    memoryItems = [];
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore
+    }
+    notifyCartListeners();
+  }, []);
 
-  const totalCount = useMemo(() => {
-    return items.reduce((acc, curr) => acc + curr.quantity, 0);
-  }, [items]);
+  const totalCount = useMemo(
+    () => items.reduce((acc, curr) => acc + curr.quantity, 0),
+    [items]
+  );
 
-  const totalAmount = useMemo(() => {
-    return items.reduce((acc, curr) => acc + curr.unitPrice * curr.quantity, 0);
-  }, [items]);
-
-  // Recommended complementary luxury watches for cross-selling
-  const recommendedUpsells = useMemo(() => {
-    const cartProductIds = new Set(items.map((i) => i.product.id));
-    return productsData
-      .filter((p) => !cartProductIds.has(p.id))
-      .slice(0, 3);
-  }, [items]);
+  const totalAmount = useMemo(
+    () =>
+      items.reduce((acc, curr) => {
+        const p = curr.unitPrice || 0;
+        return acc + p * curr.quantity;
+      }, 0),
+    [items]
+  );
 
   return (
     <CartContext.Provider
@@ -143,7 +180,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         clearCart,
         totalCount,
         totalAmount,
-        recommendedUpsells,
+        isLoaded: true,
       }}
     >
       {children}

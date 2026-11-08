@@ -3,14 +3,20 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CatalogClient from "./CatalogClient";
+import { getStoreProducts, getStoreSettings } from "@/lib/db/queries";
 
-export const metadata: Metadata = {
-  title: "Katalog | Vaqt Saroyi — Original Qo'l Soatlari",
-  description:
-    "Erkaklar va ayollar uchun original qo'l soatlari katalogi: Aurelia, Norden, Halden, Corvus, Meridiana, Tashqin brendlari. 24 oylik rasmiy kafolat bilan.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const store = await getStoreSettings();
+  return {
+    title: `Soatlar Kolleksiyasi | ${store.displayName} (Toshkent, Namangan)`,
+    description:
+      "West End Watch va Jacques Philippe soatlari kolleksiyasi. Toshkent va Namangan filiallarida tanishish yoki narxni menejer orqali aniqlash mumkin.",
+  };
+}
 
-export default function CatalogPage() {
+export default async function CatalogPage() {
+  const products = await getStoreProducts();
+
   return (
     <>
       <Navbar />
@@ -22,11 +28,10 @@ export default function CatalogPage() {
             </div>
           }
         >
-          <CatalogClient />
+          <CatalogClient initialProducts={products} />
         </Suspense>
       </div>
       <Footer />
     </>
   );
 }
-

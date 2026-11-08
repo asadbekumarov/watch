@@ -1,12 +1,11 @@
 import { MetadataRoute } from "next";
 
+// Block all web crawlers from indexing this demo pitch site
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
-      disallow: ["/api/", "/checkout/"],
+      disallow: "/",
     },
-    sitemap: "https://alfajr.uz/sitemap.xml",
   };
 }
